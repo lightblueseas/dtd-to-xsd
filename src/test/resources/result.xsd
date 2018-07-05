@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    attributeFormDefault="unqualified" elementFormDefault="qualified">
+    <xsd:element name="dataset">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="countries"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="federalstates"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="zipcodes"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="addresses"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="appointments"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="categories"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="contactmethods"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_location_data"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="events"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="users"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_addresses"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_locations"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="messages"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_messages"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_ratings"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="topics"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_topics"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="images"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="message_recipients"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="offered_event_locations"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="permissions"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="primary_user_addresses"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="profile_federalstates"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="profile_topics"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="rating_descriptions"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="repliesandnotes"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="roles"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="role_permissions"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_contactmethods"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_contacts"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_contacts_allowed_contactmethods"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_images"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_roles"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="userevents"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="countries">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="iso3166_a2name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="iso3166_a3name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="iso3166_number" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="federalstates">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="country_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="iso3166_a2code" type="xsd:string" use="optional"/>
+            <xsd:attribute name="subdivision_name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="subdivision_category" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="zipcodes">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="zipcode" type="xsd:string" use="required"/>
+            <xsd:attribute name="city" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="addresses">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="street" type="xsd:string" use="optional"/>
+            <xsd:attribute name="streetnumber" type="xsd:string" use="optional"/>
+            <xsd:attribute name="address_comment" type="xsd:string" use="optional"/>
+            <xsd:attribute name="zipcode_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="federalstate_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="appointments">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="rhythm" type="xsd:string" use="optional"/>
+            <xsd:attribute name="starttime" type="xsd:string" use="optional"/>
+            <xsd:attribute name="endtime" type="xsd:string" use="optional"/>
+            <xsd:attribute name="nexttime" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="categories">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="contactmethods">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="contactmethod" type="xsd:string" use="optional"/>
+            <xsd:attribute name="contactvalue" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="event_location_data">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="roomtype" type="xsd:string" use="optional"/>
+            <xsd:attribute name="available_rooms" type="xsd:string" use="optional"/>
+            <xsd:attribute name="seats_per_room" type="xsd:string" use="optional"/>
+            <xsd:attribute name="parking_abilities" type="xsd:string" use="optional"/>
+            <xsd:attribute name="catering_abilities" type="xsd:string" use="optional"/>
+            <xsd:attribute name="near_by_restaurant" type="xsd:string" use="optional"/>
+            <xsd:attribute name="offered_weekdays" type="xsd:string" use="optional"/>
+            <xsd:attribute name="offered_weekend" type="xsd:string" use="optional"/>
+            <xsd:attribute name="offered_evening" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="events">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="categories_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="provider_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="difficulty" type="xsd:string" use="optional"/>
+            <xsd:attribute name="subscribermin" type="xsd:string" use="optional"/>
+            <xsd:attribute name="subscribermax" type="xsd:string" use="optional"/>
+            <xsd:attribute name="duration" type="xsd:string" use="optional"/>
+            <xsd:attribute name="price" type="xsd:string" use="optional"/>
+            <xsd:attribute name="head" type="xsd:string" use="optional"/>
+            <xsd:attribute name="introduction" type="xsd:string" use="optional"/>
+            <xsd:attribute name="content" type="xsd:string" use="optional"/>
+            <xsd:attribute name="targetgroup" type="xsd:string" use="optional"/>
+            <xsd:attribute name="requirements" type="xsd:string" use="optional"/>
+            <xsd:attribute name="eventtype" type="xsd:string" use="optional"/>
+            <xsd:attribute name="material" type="xsd:string" use="optional"/>
+            <xsd:attribute name="consultant" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="users">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="username" type="xsd:string" use="optional"/>
+            <xsd:attribute name="firstname" type="xsd:string" use="optional"/>
+            <xsd:attribute name="lastname" type="xsd:string" use="optional"/>
+            <xsd:attribute name="birthname" type="xsd:string" use="optional"/>
+            <xsd:attribute name="gender" type="xsd:string" use="optional"/>
+            <xsd:attribute name="pw" type="xsd:string" use="optional"/>
+            <xsd:attribute name="salt" type="xsd:string" use="optional"/>
+            <xsd:attribute name="ip_address" type="xsd:string" use="optional"/>
+            <xsd:attribute name="dateofbirth" type="xsd:string" use="optional"/>
+            <xsd:attribute name="active" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="user_addresses">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="address_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="event_locations">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="contactperson_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="user_address_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="event_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="appointment_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="messages">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="subject" type="xsd:string" use="optional"/>
+            <xsd:attribute name="messageContent" type="xsd:string" use="optional"/>
+            <xsd:attribute name="failed2sentemail" type="xsd:string" use="optional"/>
+            <xsd:attribute name="sent_date" type="xsd:string" use="optional"/>
+            <xsd:attribute name="folder" type="xsd:string" use="optional"/>
+            <xsd:attribute name="state" type="xsd:string" use="optional"/>
+            <xsd:attribute name="messagetype" type="xsd:string" use="optional"/>
+            <xsd:attribute name="read_flag" type="xsd:string" use="optional"/>
+            <xsd:attribute name="spam_flag" type="xsd:string" use="optional"/>
+            <xsd:attribute name="sender" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="event_messages">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="message_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="event_location_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="event_ratings">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="event_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="rating_visible" type="xsd:string" use="optional"/>
+            <xsd:attribute name="presentation" type="xsd:string" use="optional"/>
+            <xsd:attribute name="topic" type="xsd:string" use="optional"/>
+            <xsd:attribute name="eventlocation" type="xsd:string" use="optional"/>
+            <xsd:attribute name="support" type="xsd:string" use="optional"/>
+            <xsd:attribute name="contact" type="xsd:string" use="optional"/>
+            <xsd:attribute name="material" type="xsd:string" use="optional"/>
+            <xsd:attribute name="title_rating" type="xsd:string" use="optional"/>
+            <xsd:attribute name="rating_description" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="topics">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="parent_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="node" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="event_topics">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="event_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="topic_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="images">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="image" type="xsd:string" use="optional"/>
+            <xsd:attribute name="description" type="xsd:string" use="optional"/>
+            <xsd:attribute name="filename" type="xsd:string" use="optional"/>
+            <xsd:attribute name="filesize" type="xsd:string" use="optional"/>
+            <xsd:attribute name="filetype" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="message_recipients">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="message_id" type="xsd:string" use="required"/>
+            <xsd:attribute name="recipient_id" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="offered_event_locations">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_address_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="event_location_data_id"
+                type="xsd:string" use="optional"/>
+            <xsd:attribute name="location_equipment_description"
+                type="xsd:string" use="optional"/>
+            <xsd:attribute name="support_description" type="xsd:string" use="optional"/>
+            <xsd:attribute name="location_description" type="xsd:string" use="optional"/>
+            <xsd:attribute name="offered_from_descriptioin"
+                type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="permissions">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="permission" type="xsd:string" use="optional"/>
+            <xsd:attribute name="shortcut" type="xsd:string" use="optional"/>
+            <xsd:attribute name="description" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="primary_user_addresses">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="address_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="profile_federalstates">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="federalstate_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="profile_topics">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="topic_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="rating_descriptions">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="event_ratings_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="recommend_event" type="xsd:string" use="optional"/>
+            <xsd:attribute name="recommend_consultant" type="xsd:string" use="optional"/>
+            <xsd:attribute name="most_like_rating" type="xsd:string" use="optional"/>
+            <xsd:attribute name="less_like_rating" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="repliesandnotes">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="message_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="replyornote_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="roles">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="rolename" type="xsd:string" use="optional"/>
+            <xsd:attribute name="description" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="role_permissions">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="role_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="permission_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="user_contactmethods">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="contactmethod_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="user_contacts">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="contact_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="user_contacts_allowed_contactmethods">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_contact_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="user_contactmethod_id"
+                type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="user_images">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="image_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="user_roles">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="role_id" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="userevents">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="user_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="event_id" type="xsd:string" use="optional"/>
+            <xsd:attribute name="relationtype" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
