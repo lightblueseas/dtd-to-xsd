@@ -10,12 +10,12 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 
 Than you can add the dependency to your dependencies:
 
-		<!-- XML-EXTENSIONS version -->
+		<!-- DTD2XSD version -->
 		<dtd2xsd.version>1.11</dtd2xsd.version>
 
 		<dependencies>
 			...
-            <!-- XML-EXTENSIONS DEPENDENCY -->
+            <!-- DTD2XSD DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>dtd2xsd</artifactId>
