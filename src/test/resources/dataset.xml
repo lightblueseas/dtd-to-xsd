@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE dataset SYSTEM "dataset.dtd">
+<dataset>
+  <zipcodes id="1033691620" zipcode="10358" city="Berlin"/>
+  <addresses id="1033691621" street="Kaiser Str." streetnumber="23" address_comment="" zipcode_id="1033691620" federalstate_id="2633"/>
+  <appointments id="1" rhythm="does_not_repeat" starttime="2011-02-21 00:00:00.0" endtime="2011-02-22 00:00:00.0"/>
+  <categories id="1033691708" name="Programmierung"/>
+  <contactmethods id="1033691622" contactmethod="email" contactvalue="info@fritsche.com"/>
+  <events id="1033691709" categories_id="1033691708" provider_id="1033691623" name="Javascript" difficulty="ADVANCED" subscribermin="3" subscribermax="10" duration="3" price="670.00" head="Grundlagen Javascript" introduction="Grundlagen Javascript" content="Grundlagen Javascript" targetgroup="Grundlagen Javascript" requirements="Grundlagen Javascript" eventtype="eventlocation" material="false" consultant="Hans Dieter"/>
+  <users id="1033691623" username="fritsche.com" lastname="Fritsche GmbH" gender="incorporate" pw="ED150B7257E8D79F193B7559393014F97B77791475EDF634CF68E025624CCFA3B630831876D1339F8CFFE6A57F5FA0C92666663D97787BEA3D300832EEE2C856542E26C15BCA30F300084C927909015286FFC01ECD89356418A91BCC73399A33E066F6705AF6DE8DB360465092A1575A87BC7E04577CF924EDA108371950CB91" salt="7SBmMSup" ip_address="0:0:0:0:0:0:0:1" dateofbirth="2011-02-19" active="true"/>
+  <user_addresses id="1033691732" user_id="1033691623" address_id="1033691731"/>
+  <event_locations id="1033691734" contactperson_id="1033691623" user_address_id="1033691732" event_id="1033691713" appointment_id="1"/>
+  <messages id="1033691737" subject="Request for course Wicket" messageContent="Ich m&#246;chte mehr &#252;ber diesen Kurs erfahren..." failed2sentemail="true" sent_date="2011-02-19 13:55:39.0" folder="unsent" state="unreplied" messagetype="mail" read_flag="false" spam_flag="false" sender="1033691668"/>
+  <messages id="1033691748" subject="Antwort auf Ihre Anfrage" messageContent="Gerne sende ich Ihnen infomaterial..." failed2sentemail="true" sent_date="2011-02-19 14:05:46.0" folder="replied" state="unreplied" messagetype="reply" read_flag="false" spam_flag="false" sender="1033691623"/>
+  <event_messages id="1033691739" message_id="1033691737" event_location_id="1033691734"/>
+  <topics id="1" name="themes.node" node="true"/>
+  <topics id="2" name="themes.management.node" parent_id="1" node="true"/>
+  <topics id="3" name="themes.it.telecommunication.node" parent_id="1" node="true"/>
+  <topics id="4" name="themes.industry.business.economics.node" parent_id="1" node="true"/>
+  <topics id="5" name="themes.finances.controlling.node" parent_id="1" node="true"/>
+  <topics id="6" name="themes.marketing.and.advertisement.node" parent_id="1" node="true"/>
+  <event_topics id="1033691721" event_id="1033691713" topic_id="3"/>
+  <message_recipients id="1033691738" message_id="1033691737" recipient_id="1033691623"/>
+  <primary_user_addresses id="1033691632" user_id="1033691623" address_id="1033691621"/>
+  <profile_federalstates id="886119874" user_id="1033691668" federalstate_id="2631"/>
+  <profile_topics id="886119875" user_id="1033691668" topic_id="442"/>
+  <profile_topics id="886119877" user_id="1033691668" topic_id="12"/>
+  <profile_topics id="886119879" user_id="1033691668" topic_id="2"/>
+  <repliesandnotes id="1033691749" message_id="1033691737" replyornote_id="1033691748"/>
+  <roles id="1" rolename="root" description="The role root."/>
+  <user_contactmethods id="1033691627" user_id="1033691623" contactmethod_id="1033691622"/>
+  <user_roles id="1033691631" user_id="1033691623" role_id="3"/>
+  <userevents id="1033691710" user_id="1033691623" event_id="1033691709" relationtype="provided"/>
+</dataset>

@@ -1,0 +1,344 @@
+<!ELEMENT dataset (
+    countries*,
+    federalstates*,
+    zipcodes*,
+    addresses*,
+    appointments*,
+    categories*,
+    contactmethods*,
+    event_location_data*,
+    events*,
+    users*,
+    user_addresses*,
+    event_locations*,
+    messages*,
+    event_messages*,
+    event_ratings*,
+    topics*,
+    event_topics*,
+    images*,
+    message_recipients*,
+    offered_event_locations*,
+    permissions*,
+    primary_user_addresses*,
+    profile_federalstates*,
+    profile_topics*,
+    rating_descriptions*,
+    repliesandnotes*,
+    roles*,
+    role_permissions*,
+    user_contactmethods*,
+    user_contacts*,
+    user_contacts_allowed_contactmethods*,
+    user_images*,
+    user_roles*,
+    userevents*)>
+
+<!ELEMENT countries EMPTY>
+<!ATTLIST countries
+    id CDATA #REQUIRED
+    name CDATA #IMPLIED
+    iso3166_a2name CDATA #IMPLIED
+    iso3166_a3name CDATA #IMPLIED
+    iso3166_number CDATA #IMPLIED
+>
+
+<!ELEMENT federalstates EMPTY>
+<!ATTLIST federalstates
+    id CDATA #REQUIRED
+    country_id CDATA #IMPLIED
+    name CDATA #IMPLIED
+    iso3166_a2code CDATA #IMPLIED
+    subdivision_name CDATA #IMPLIED
+    subdivision_category CDATA #IMPLIED
+>
+
+<!ELEMENT zipcodes EMPTY>
+<!ATTLIST zipcodes
+    id CDATA #REQUIRED
+    zipcode CDATA #REQUIRED
+    city CDATA #IMPLIED
+>
+
+<!ELEMENT addresses EMPTY>
+<!ATTLIST addresses
+    id CDATA #REQUIRED
+    street CDATA #IMPLIED
+    streetnumber CDATA #IMPLIED
+    address_comment CDATA #IMPLIED
+    zipcode_id CDATA #IMPLIED
+    federalstate_id CDATA #IMPLIED
+>
+
+<!ELEMENT appointments EMPTY>
+<!ATTLIST appointments
+    id CDATA #REQUIRED
+    rhythm CDATA #IMPLIED
+    starttime CDATA #IMPLIED
+    endtime CDATA #IMPLIED
+    nexttime CDATA #IMPLIED
+>
+
+<!ELEMENT categories EMPTY>
+<!ATTLIST categories
+    id CDATA #REQUIRED
+    name CDATA #IMPLIED
+>
+
+<!ELEMENT contactmethods EMPTY>
+<!ATTLIST contactmethods
+    id CDATA #REQUIRED
+    contactmethod CDATA #IMPLIED
+    contactvalue CDATA #IMPLIED
+>
+
+<!ELEMENT event_location_data EMPTY>
+<!ATTLIST event_location_data
+    id CDATA #REQUIRED
+    roomtype CDATA #IMPLIED
+    available_rooms CDATA #IMPLIED
+    seats_per_room CDATA #IMPLIED
+    parking_abilities CDATA #IMPLIED
+    catering_abilities CDATA #IMPLIED
+    near_by_restaurant CDATA #IMPLIED
+    offered_weekdays CDATA #IMPLIED
+    offered_weekend CDATA #IMPLIED
+    offered_evening CDATA #IMPLIED
+>
+
+<!ELEMENT events EMPTY>
+<!ATTLIST events
+    id CDATA #REQUIRED
+    categories_id CDATA #IMPLIED
+    provider_id CDATA #IMPLIED
+    name CDATA #IMPLIED
+    difficulty CDATA #IMPLIED
+    subscribermin CDATA #IMPLIED
+    subscribermax CDATA #IMPLIED
+    duration CDATA #IMPLIED
+    price CDATA #IMPLIED
+    head CDATA #IMPLIED
+    introduction CDATA #IMPLIED
+    content CDATA #IMPLIED
+    targetgroup CDATA #IMPLIED
+    requirements CDATA #IMPLIED
+    eventtype CDATA #IMPLIED
+    material CDATA #IMPLIED
+    consultant CDATA #IMPLIED
+>
+
+<!ELEMENT users EMPTY>
+<!ATTLIST users
+    id CDATA #REQUIRED
+    username CDATA #IMPLIED
+    firstname CDATA #IMPLIED
+    lastname CDATA #IMPLIED
+    birthname CDATA #IMPLIED
+    gender CDATA #IMPLIED
+    pw CDATA #IMPLIED
+    salt CDATA #IMPLIED
+    ip_address CDATA #IMPLIED
+    dateofbirth CDATA #IMPLIED
+    active CDATA #IMPLIED
+>
+
+<!ELEMENT user_addresses EMPTY>
+<!ATTLIST user_addresses
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    address_id CDATA #IMPLIED
+>
+
+<!ELEMENT event_locations EMPTY>
+<!ATTLIST event_locations
+    id CDATA #REQUIRED
+    contactperson_id CDATA #IMPLIED
+    user_address_id CDATA #IMPLIED
+    event_id CDATA #IMPLIED
+    appointment_id CDATA #IMPLIED
+>
+
+<!ELEMENT messages EMPTY>
+<!ATTLIST messages
+    id CDATA #REQUIRED
+    subject CDATA #IMPLIED
+    messageContent CDATA #IMPLIED
+    failed2sentemail CDATA #IMPLIED
+    sent_date CDATA #IMPLIED
+    folder CDATA #IMPLIED
+    state CDATA #IMPLIED
+    messagetype CDATA #IMPLIED
+    read_flag CDATA #IMPLIED
+    spam_flag CDATA #IMPLIED
+    sender CDATA #IMPLIED
+>
+
+<!ELEMENT event_messages EMPTY>
+<!ATTLIST event_messages
+    id CDATA #REQUIRED
+    message_id CDATA #IMPLIED
+    event_location_id CDATA #IMPLIED
+>
+
+<!ELEMENT event_ratings EMPTY>
+<!ATTLIST event_ratings
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    event_id CDATA #IMPLIED
+    rating_visible CDATA #IMPLIED
+    presentation CDATA #IMPLIED
+    topic CDATA #IMPLIED
+    eventlocation CDATA #IMPLIED
+    support CDATA #IMPLIED
+    contact CDATA #IMPLIED
+    material CDATA #IMPLIED
+    title_rating CDATA #IMPLIED
+    rating_description CDATA #IMPLIED
+>
+
+<!ELEMENT topics EMPTY>
+<!ATTLIST topics
+    id CDATA #REQUIRED
+    name CDATA #IMPLIED
+    parent_id CDATA #IMPLIED
+    node CDATA #IMPLIED
+>
+
+<!ELEMENT event_topics EMPTY>
+<!ATTLIST event_topics
+    id CDATA #REQUIRED
+    event_id CDATA #IMPLIED
+    topic_id CDATA #IMPLIED
+>
+
+<!ELEMENT images EMPTY>
+<!ATTLIST images
+    id CDATA #REQUIRED
+    image CDATA #IMPLIED
+    description CDATA #IMPLIED
+    filename CDATA #IMPLIED
+    filesize CDATA #IMPLIED
+    filetype CDATA #IMPLIED
+>
+
+<!ELEMENT message_recipients EMPTY>
+<!ATTLIST message_recipients
+    id CDATA #REQUIRED
+    message_id CDATA #REQUIRED
+    recipient_id CDATA #REQUIRED
+>
+
+<!ELEMENT offered_event_locations EMPTY>
+<!ATTLIST offered_event_locations
+    id CDATA #REQUIRED
+    user_address_id CDATA #IMPLIED
+    event_location_data_id CDATA #IMPLIED
+    location_equipment_description CDATA #IMPLIED
+    support_description CDATA #IMPLIED
+    location_description CDATA #IMPLIED
+    offered_from_descriptioin CDATA #IMPLIED
+>
+
+<!ELEMENT permissions EMPTY>
+<!ATTLIST permissions
+    id CDATA #REQUIRED
+    permission CDATA #IMPLIED
+    shortcut CDATA #IMPLIED
+    description CDATA #IMPLIED
+>
+
+<!ELEMENT primary_user_addresses EMPTY>
+<!ATTLIST primary_user_addresses
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    address_id CDATA #IMPLIED
+>
+
+<!ELEMENT profile_federalstates EMPTY>
+<!ATTLIST profile_federalstates
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    federalstate_id CDATA #IMPLIED
+>
+
+<!ELEMENT profile_topics EMPTY>
+<!ATTLIST profile_topics
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    topic_id CDATA #IMPLIED
+>
+
+<!ELEMENT rating_descriptions EMPTY>
+<!ATTLIST rating_descriptions
+    id CDATA #REQUIRED
+    event_ratings_id CDATA #IMPLIED
+    recommend_event CDATA #IMPLIED
+    recommend_consultant CDATA #IMPLIED
+    most_like_rating CDATA #IMPLIED
+    less_like_rating CDATA #IMPLIED
+>
+
+<!ELEMENT repliesandnotes EMPTY>
+<!ATTLIST repliesandnotes
+    id CDATA #REQUIRED
+    message_id CDATA #IMPLIED
+    replyornote_id CDATA #IMPLIED
+>
+
+<!ELEMENT roles EMPTY>
+<!ATTLIST roles
+    id CDATA #REQUIRED
+    rolename CDATA #IMPLIED
+    description CDATA #IMPLIED
+>
+
+<!ELEMENT role_permissions EMPTY>
+<!ATTLIST role_permissions
+    id CDATA #REQUIRED
+    role_id CDATA #IMPLIED
+    permission_id CDATA #IMPLIED
+>
+
+<!ELEMENT user_contactmethods EMPTY>
+<!ATTLIST user_contactmethods
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    contactmethod_id CDATA #IMPLIED
+>
+
+<!ELEMENT user_contacts EMPTY>
+<!ATTLIST user_contacts
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    contact_id CDATA #IMPLIED
+>
+
+<!ELEMENT user_contacts_allowed_contactmethods EMPTY>
+<!ATTLIST user_contacts_allowed_contactmethods
+    id CDATA #REQUIRED
+    user_contact_id CDATA #IMPLIED
+    user_contactmethod_id CDATA #IMPLIED
+>
+
+<!ELEMENT user_images EMPTY>
+<!ATTLIST user_images
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    image_id CDATA #IMPLIED
+>
+
+<!ELEMENT user_roles EMPTY>
+<!ATTLIST user_roles
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    role_id CDATA #IMPLIED
+>
+
+<!ELEMENT userevents EMPTY>
+<!ATTLIST userevents
+    id CDATA #REQUIRED
+    user_id CDATA #IMPLIED
+    event_id CDATA #IMPLIED
+    relationtype CDATA #IMPLIED
+>
+
