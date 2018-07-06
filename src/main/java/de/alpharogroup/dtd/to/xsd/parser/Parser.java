@@ -997,20 +997,4 @@ public class Parser extends XMLDocumentParser
 		writer.write(this.root, output);
 	}
 
-	/**
-	 * Write xsd.
-	 *
-	 * @param out
-	 *            the out
-	 */
-	public void writeXsd(final Writer out)
-	{
-		final LSSerializer writer = this.domImpl.createLSSerializer();
-		final LSOutput output = this.domImpl.createLSOutput();
-		output.setCharacterStream(out);
-		output.setEncoding(UTF_8);
-		writer.getDomConfig().setParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE);
-		writer.write(this.root, output);
-	}
-
 }

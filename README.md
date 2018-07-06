@@ -21,7 +21,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- DTD-TO-XSD version -->
-		<dtd-to-xsd.version>1.11</dtd-to-xsd.version>
+		<dtd-to-xsd.version>1</dtd-to-xsd.version>
 
 		<dependencies>
 			...
