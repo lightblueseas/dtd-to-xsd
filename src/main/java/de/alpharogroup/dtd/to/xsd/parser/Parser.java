@@ -28,14 +28,12 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
-import org.apache.log4j.Logger;
 import org.apache.xerces.dom.CoreDOMImplementationImpl;
 import org.apache.xerces.parsers.XMLDocumentParser;
 import org.apache.xerces.xni.Augmentations;
@@ -56,13 +54,18 @@ import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.ls.LSOutput;
 import org.w3c.dom.ls.LSSerializer;
 
+import de.alpharogroup.collections.list.ListFactory;
+import de.alpharogroup.collections.map.MapFactory;
+import de.alpharogroup.collections.set.SetFactory;
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class {@link Parser} is for parsing dtd document to a xsd document.
  *
  * @author Asterios Raptis
  */
+@Slf4j
 public class Parser extends XMLDocumentParser
 	implements
 		XMLDTDHandler,
@@ -217,9 +220,6 @@ public class Parser extends XMLDocumentParser
 	/** This Constant is for the dtd name CDATA. */
 	private static final String DTD_CDATA = "CDATA";
 
-	/** The log. */
-	private static final Logger log = Logger.getLogger("Parser");
-
 	/** The type. */
 	private String type = "";
 
@@ -239,7 +239,7 @@ public class Parser extends XMLDocumentParser
 	private String targetNamespace;
 
 	/** The set xml resource identifier. */
-	private final HashSet<String> setXmlResourceIdentifier;
+	private final Set<String> setXmlResourceIdentifier;
 
 	/** The has parsed. */
 	private boolean hasParsed = false;
@@ -275,7 +275,7 @@ public class Parser extends XMLDocumentParser
 	{
 		super(configuration);
 		configuration.setErrorHandler(this);
-		this.dataTypeMap = new HashMap<>();
+		this.dataTypeMap = MapFactory.newLinkedHashMap();
 		this.dataTypeMap.put(DTD_ID, XSD_ID);
 		this.dataTypeMap.put(DTD_IDREF, XSD_IDREF);
 		this.dataTypeMap.put(DTD_CDATA, XSD_STRING);
@@ -285,11 +285,11 @@ public class Parser extends XMLDocumentParser
 		this.dataTypeMap.put(DTD_NMTOKEN, XSD_NMTOKEN);
 		this.dataTypeMap.put(DTD_NMTOKENS, XSD_NMTOKENS);
 		this.dataTypeMap.put(DTD_NOTATION, XSD_NOTATION);
-		this.allElements = new HashMap<>();
-		this.setXmlResourceIdentifier = new HashSet<>();
-		this.listGroupTypes = new ArrayList<>();
-		this.listGroupElements = new ArrayList<>();
-		this.listXsdTypePattern = new ArrayList<>();
+		this.allElements = MapFactory.newLinkedHashMap();
+		this.setXmlResourceIdentifier = SetFactory.newLinkedHashSet();
+		this.listGroupTypes = ListFactory.newArrayList();
+		this.listGroupElements = ListFactory.newArrayList();
+		this.listXsdTypePattern = ListFactory.newArrayList();
 		this.parsedStack = new Stack<>();
 		this.stackElements = new Stack<>();
 	}
@@ -317,47 +317,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Any.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#any(org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void any(final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Attribute decl.
-	 *
-	 * @param ename
-	 *            the ename
-	 * @param aname
-	 *            the aname
-	 * @param atype
-	 *            the atype
-	 * @param enums
-	 *            the enums
-	 * @param dtype
-	 *            the dtype
-	 * @param dvalue
-	 *            the dvalue
-	 * @param nondvalue
-	 *            the nondvalue
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#attributeDecl(java.lang.String,
-	 *      java.lang.String, java.lang.String, java.lang.String[], java.lang.String,
-	 *      org.apache.xerces.xni.XMLString, org.apache.xerces.xni.XMLString,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void attributeDecl(final String ename, final String aname, final String atype,
@@ -471,16 +431,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Comment.
-	 *
-	 * @param text
-	 *            the text
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#comment(org.apache.xerces.xni.XMLString,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void comment(final XMLString text, final Augmentations augs) throws XNIException
@@ -495,16 +446,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Element.
-	 *
-	 * @param name
-	 *            the name
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#element(java.lang.String,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void element(final String name, final Augmentations augs) throws XNIException
@@ -536,87 +478,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Element decl.
-	 *
-	 * @param name
-	 *            the name
-	 * @param contentModel
-	 *            the content model
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#elementDecl(java.lang.String,
-	 *      java.lang.String, org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void elementDecl(final String name, final String contentModel, final Augmentations augs)
-		throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Empty.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#empty(org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void empty(final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * End attlist.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endAttlist(org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void endAttlist(final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * End conditional.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endConditional(org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void endConditional(final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * End content model.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endContentModel(org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void endContentModel(final Augmentations augs) throws XNIException
@@ -631,13 +493,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * End dtd.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endDTD(org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void endDTD(final Augmentations augs) throws XNIException
@@ -654,30 +510,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * End external subset.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endExternalSubset(org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void endExternalSubset(final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * End group.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endGroup(org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void endGroup(final Augmentations augs) throws XNIException
@@ -719,36 +552,19 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * End parameter entity.
-	 *
-	 * @param name
-	 *            the name
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#endParameterEntity(java.lang.String,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void endParameterEntity(final String name, final Augmentations augs) throws XNIException
 	{
-		this.hasParsed = this.parsedStack.pop();
+		if (!this.parsedStack.isEmpty())
+		{
+			this.hasParsed = this.parsedStack.pop();
+		}
 	}
 
 	/**
-	 * Error.
-	 *
-	 * @param domain
-	 *            the domain
-	 * @param key
-	 *            the key
-	 * @param exception
-	 *            the exception
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.xni.parser.XMLErrorHandler#error(java.lang.String, java.lang.String,
-	 *      org.apache.xerces.xni.parser.XMLParseException)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void error(final String domain, final String key, final XMLParseException exception)
@@ -759,41 +575,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * External entity decl.
-	 *
-	 * @param name
-	 *            the name
-	 * @param identifier
-	 *            the identifier
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#externalEntityDecl(java.lang.String,
-	 *      org.apache.xerces.xni.XMLResourceIdentifier, org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void externalEntityDecl(final String name, final XMLResourceIdentifier identifier,
-		final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Fatal error.
-	 *
-	 * @param domain
-	 *            the domain
-	 * @param key
-	 *            the key
-	 * @param exception
-	 *            the exception
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.xni.parser.XMLErrorHandler#fatalError(java.lang.String,
-	 *      java.lang.String, org.apache.xerces.xni.parser.XMLParseException)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void fatalError(final String domain, final String key, final XMLParseException exception)
@@ -811,53 +593,6 @@ public class Parser extends XMLDocumentParser
 	public String getTargetNamespace()
 	{
 		return this.targetNamespace;
-	}
-
-	/**
-	 * Ignored characters.
-	 *
-	 * @param text
-	 *            the text
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#ignoredCharacters(org.apache.xerces.xni.XMLString,
-	 *      org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void ignoredCharacters(final XMLString text, final Augmentations augs)
-		throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Internal entity decl.
-	 *
-	 * @param name
-	 *            the name
-	 * @param text
-	 *            the text
-	 * @param nonNormalizedText
-	 *            the non normalized text
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#internalEntityDecl(java.lang.String,
-	 *      org.apache.xerces.xni.XMLString, org.apache.xerces.xni.XMLString,
-	 *      org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void internalEntityDecl(final String name, final XMLString text,
-		final XMLString nonNormalizedText, final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
 	}
 
 	/**
@@ -1006,18 +741,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Notation decl.
-	 *
-	 * @param name
-	 *            the name
-	 * @param identifier
-	 *            the identifier
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#notationDecl(java.lang.String,
-	 *      org.apache.xerces.xni.XMLResourceIdentifier, org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void notationDecl(final String name, final XMLResourceIdentifier identifier,
@@ -1039,16 +763,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Occurrence.
-	 *
-	 * @param type
-	 *            the type
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#occurrence(short,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void occurrence(final short type, final Augmentations augs) throws XNIException
@@ -1067,13 +782,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Pcdata.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#pcdata(org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void pcdata(final Augmentations augs) throws XNIException
@@ -1112,39 +821,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Processing instruction.
-	 *
-	 * @param target
-	 *            the target
-	 * @param data
-	 *            the data
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#processingInstruction(java.lang.String,
-	 *      org.apache.xerces.xni.XMLString, org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void processingInstruction(final String target, final XMLString data,
-		final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Separator.
-	 *
-	 * @param type
-	 *            the type
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#separator(short,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void separator(final short type, final Augmentations augs) throws XNIException
@@ -1198,56 +875,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Start attlist.
-	 *
-	 * @param name
-	 *            the name
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startAttlist(java.lang.String,
-	 *      org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void startAttlist(final String name, final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Start conditional.
-	 *
-	 * @param type
-	 *            the type
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startConditional(short,
-	 *      org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void startConditional(final short type, final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Start content model.
-	 *
-	 * @param ename
-	 *            the ename
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startContentModel(java.lang.String,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void startContentModel(final String ename, final Augmentations augs) throws XNIException
@@ -1265,16 +893,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Start dtd.
-	 *
-	 * @param locator
-	 *            the locator
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startDTD(org.apache.xerces.xni.XMLLocator,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void startDTD(final XMLLocator locator, final Augmentations augs) throws XNIException
@@ -1317,31 +936,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Start external subset.
-	 *
-	 * @param identifier
-	 *            the identifier
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startExternalSubset(org.apache.xerces.xni.XMLResourceIdentifier,
-	 *      org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void startExternalSubset(final XMLResourceIdentifier identifier,
-		final Augmentations augs) throws XNIException
-	{
-	}
-
-	/**
-	 * Start group.
-	 *
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startGroup(org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void startGroup(final Augmentations augs) throws XNIException
@@ -1357,21 +952,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Start parameter entity.
-	 *
-	 * @param name
-	 *            the name
-	 * @param identifier
-	 *            the identifier
-	 * @param encoding
-	 *            the encoding
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#startParameterEntity(java.lang.String,
-	 *      org.apache.xerces.xni.XMLResourceIdentifier, java.lang.String,
-	 *      org.apache.xerces.xni.Augmentations)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void startParameterEntity(final String name, final XMLResourceIdentifier identifier,
@@ -1391,67 +972,7 @@ public class Parser extends XMLDocumentParser
 	}
 
 	/**
-	 * Text decl.
-	 *
-	 * @param version
-	 *            the version
-	 * @param encoding
-	 *            the encoding
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#textDecl(java.lang.String,
-	 *      java.lang.String, org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void textDecl(final String version, final String encoding, final Augmentations augs)
-		throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Unparsed entity decl.
-	 *
-	 * @param name
-	 *            the name
-	 * @param identifier
-	 *            the identifier
-	 * @param notation
-	 *            the notation
-	 * @param augs
-	 *            the augs
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.parsers.AbstractXMLDocumentParser#unparsedEntityDecl(java.lang.String,
-	 *      org.apache.xerces.xni.XMLResourceIdentifier, java.lang.String,
-	 *      org.apache.xerces.xni.Augmentations)
-	 */
-	@Override
-	public void unparsedEntityDecl(final String name, final XMLResourceIdentifier identifier,
-		final String notation, final Augmentations augs) throws XNIException
-	{
-		if (this.hasParsed)
-		{
-		}
-	}
-
-	/**
-	 * Warning.
-	 *
-	 * @param domain
-	 *            the domain
-	 * @param key
-	 *            the key
-	 * @param exception
-	 *            the exception
-	 * @throws XNIException
-	 *             the xNI exception {@inheritDoc}
-	 * @see org.apache.xerces.xni.parser.XMLErrorHandler#warning(java.lang.String, java.lang.String,
-	 *      org.apache.xerces.xni.parser.XMLParseException)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void warning(final String domain, final String key, final XMLParseException exception)
@@ -1491,4 +1012,5 @@ public class Parser extends XMLDocumentParser
 		writer.getDomConfig().setParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE);
 		writer.write(this.root, output);
 	}
+
 }

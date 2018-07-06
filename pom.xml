@@ -40,8 +40,13 @@
 	<properties>
 		<file-worker.version>4.22</file-worker.version>
 		<test-objects.version>4.28</test-objects.version>
+		<!-- SILLY-COLLECTIONS version -->
+		<silly-collections.version>4.31</silly-collections.version>
+		<!-- JOBJECT-EXTENSIONS versions -->
+		<jobject-extensions.version>1.11</jobject-extensions.version>
+		<jobject-evaluate.version>${jobject-extensions.version}</jobject-evaluate.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<xercesImpl.version>2.11.0</xercesImpl.version>		
+		<xercesImpl.version>2.11.0</xercesImpl.version>
 	</properties>
 
 	<dependencyManagement>
@@ -65,6 +70,18 @@
 				<artifactId>test-objects</artifactId>
 				<version>${test-objects.version}</version>
 			</dependency>
+			<!-- SILLY-COLLECTIONS DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>silly-collections</artifactId>
+				<version>${silly-collections.version}</version>
+			</dependency>
+			<!-- JOBJECT-EVALUATE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jobject-evaluate</artifactId>
+				<version>${jobject-evaluate.version}</version>
+			</dependency>
 
 		</dependencies>
 
@@ -76,6 +93,11 @@
 			<groupId>xerces</groupId>
 			<artifactId>xercesImpl</artifactId>
 		</dependency>
+		<!-- SILLY-COLLECTIONS DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>silly-collections</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
@@ -86,6 +108,18 @@
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>test-objects</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- MEANBEAN DEPENDENCY -->
+		<dependency>
+			<groupId>org.meanbean</groupId>
+			<artifactId>meanbean</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- JOBJECT-EVALUATE DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jobject-evaluate</artifactId>
 			<scope>test</scope>
 		</dependency>
 
