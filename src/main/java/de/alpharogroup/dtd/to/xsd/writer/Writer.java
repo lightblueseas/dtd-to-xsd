@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
-import org.apache.xerces.xni.XNIException;
 import org.apache.xerces.xni.parser.XMLInputSource;
 
 import de.alpharogroup.dtd.to.xsd.configuration.Configuration;
@@ -109,12 +108,10 @@ public class Writer
 	 *
 	 * @param xmlInputSource
 	 *            the xml input source
-	 * @throws XNIException
-	 *             the xNI exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void parse(final XMLInputSource xmlInputSource) throws XNIException, IOException
+	public void parse(final XMLInputSource xmlInputSource) throws IOException
 	{
 		this.dtd2XSDParser.parse(xmlInputSource);
 		this.dtd2XSDParser.writeXsd(this.outStream);

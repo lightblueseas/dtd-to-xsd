@@ -41,9 +41,9 @@ import de.alpharogroup.file.checksum.ChecksumExtensions;
 import de.alpharogroup.file.search.PathFinder;
 
 /**
- * The unit test class for the class {@link Converter}.
+ * The unit test class for the class {@link DtdToXsdExtensions}.
  */
-public class ConverterTest extends AbstractTestCase<File, File>
+public class DtdToXsdExtensionsTest extends AbstractTestCase<File, File>
 {
 
 	/** The dataset dtd that will be used for input argument in the conversion. */
@@ -107,7 +107,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	}
 
 	/**
-	 * Test method for {@link Converter#convert(File, File)}.
+	 * Test method for {@link DtdToXsdExtensions#convert(File, File)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -115,13 +115,13 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	@Test
 	public void testConvertFileFile() throws IOException
 	{
-		actual = Converter.convert(datasetDtd, actualDatasetXsd);
+		actual = DtdToXsdExtensions.convert(datasetDtd, actualDatasetXsd);
 		expected = expectedDatasetXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
 			ChecksumExtensions.getCheckSumAdler32(expected));
 
-		actual = Converter.convert(propertiesDtd, actualPropertiesXsd);
+		actual = DtdToXsdExtensions.convert(propertiesDtd, actualPropertiesXsd);
 		expected = expectedPropertiesXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
@@ -129,7 +129,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	}
 
 	/**
-	 * Test method for {@link Converter#convert(String, File)}.
+	 * Test method for {@link DtdToXsdExtensions#convert(String, File)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -137,13 +137,13 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	@Test
 	public void testConvertStringFile() throws IOException
 	{
-		actual = Converter.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd);
+		actual = DtdToXsdExtensions.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd);
 		expected = expectedDatasetXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
 			ChecksumExtensions.getCheckSumAdler32(expected));
 
-		actual = Converter.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd);
+		actual = DtdToXsdExtensions.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd);
 		expected = expectedPropertiesXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
@@ -151,7 +151,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	}
 
 	/**
-	 * Test method for {@link Converter#convert(String, List, String, File)}.
+	 * Test method for {@link DtdToXsdExtensions#convert(String, List, String, File)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -167,7 +167,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 		listXsdTypePattern = ListFactory.newArrayList();
 		dtdfile = datasetDtd.getAbsolutePath();
 		actual = actualDatasetXsd;
-		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, actual);
+		DtdToXsdExtensions.convert(targetNamespace, listXsdTypePattern, dtdfile, actual);
 		expected = expectedDatasetWithNamespaceXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
@@ -177,7 +177,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 		listXsdTypePattern = ListFactory.newArrayList();
 		dtdfile = propertiesDtd.getAbsolutePath();
 		actual = actualPropertiesXsd;
-		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, actual);
+		DtdToXsdExtensions.convert(targetNamespace, listXsdTypePattern, dtdfile, actual);
 		expected = expectedPropertiesWithNamespaceXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
@@ -185,7 +185,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	}
 
 	/**
-	 * Test method for {@link Converter#convert(String, List, String, String)}.
+	 * Test method for {@link DtdToXsdExtensions#convert(String, List, String, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -202,7 +202,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 		listXsdTypePattern = ListFactory.newArrayList();
 		dtdfile = datasetDtd.getAbsolutePath();
 		xsdfile = actualDatasetXsd.getAbsolutePath();
-		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
+		DtdToXsdExtensions.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
 		actual = actualDatasetXsd;
 		expected = expectedDatasetWithNamespaceXsd;
 
@@ -213,7 +213,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 		listXsdTypePattern = ListFactory.newArrayList();
 		dtdfile = propertiesDtd.getAbsolutePath();
 		xsdfile = actualPropertiesXsd.getAbsolutePath();
-		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
+		DtdToXsdExtensions.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
 		actual = actualPropertiesXsd;
 		expected = expectedPropertiesWithNamespaceXsd;
 
@@ -222,7 +222,7 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	}
 
 	/**
-	 * Test method for {@link Converter#convert(String, String)}.
+	 * Test method for {@link DtdToXsdExtensions#convert(String, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -230,14 +230,14 @@ public class ConverterTest extends AbstractTestCase<File, File>
 	@Test
 	public void testConvertStringString() throws IOException
 	{
-		Converter.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd.getAbsolutePath());
+		DtdToXsdExtensions.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd.getAbsolutePath());
 		actual = actualDatasetXsd;
 		expected = expectedDatasetXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
 			ChecksumExtensions.getCheckSumAdler32(expected));
 
-		Converter.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd.getAbsolutePath());
+		DtdToXsdExtensions.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd.getAbsolutePath());
 		actual = actualPropertiesXsd;
 		expected = expectedPropertiesXsd;
 
