@@ -128,6 +128,7 @@ public final class DtdToXsdExtensions
 	 * @param xsdfile
 	 *            the xsd file to write
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void convert(final @NonNull String targetNamespace,
 		final List<TypePattern> listXsdTypePattern, final @NonNull String dtdfile,

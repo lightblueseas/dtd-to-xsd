@@ -67,7 +67,8 @@ public class ConfigurationTest
 		configuration.setEntityResolver(new XMLEntityManager());
 		XMLEntityResolver actual = configuration.getEntityResolver();
 		assertNotNull(actual);
-		XMLDTDContentModelHandler dtdContentModelHandler = configuration.getDTDContentModelHandler();
+		XMLDTDContentModelHandler dtdContentModelHandler = configuration
+			.getDTDContentModelHandler();
 		assertNull(dtdContentModelHandler);
 		XMLDTDHandler dtdHandler = configuration.getDTDHandler();
 		assertNull(dtdHandler);

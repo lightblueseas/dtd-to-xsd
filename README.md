@@ -1,5 +1,15 @@
 # dtd-to-xsd
 
+<div align="center">
+
+[![Build Status](https://travis-ci.org/lightblueseas/dtd-to-xsd.svg?branch=master)](https://travis-ci.org/lightblueseas/dtd-to-xsd) 
+[![Coverage Status](https://coveralls.io/repos/github/lightblueseas/dtd-to-xsd/badge.svg?branch=develop)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=master)
+[![Open Issues](https://img.shields.io/github/issues/lightblueseas/dtd-to-xsd.svg?style=flat)](https://github.com/lightblueseas/dtd-to-xsd/issues)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/dtd-to-xsd/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/dtd-to-xsd)
+[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/dtd-to-xsd.svg)](http://www.javadoc.io/doc/de.alpharogroup/dtd-to-xsd)
+
+</div>
+
 Simple converter for dtd files to convert to xsd files
 
 ## License
@@ -11,7 +21,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Than you can add the dependency to your dependencies:
 
 		<!-- DTD-TO-XSD version -->
-		<dtd-to-xsd.version>1.11</dtd-to-xsd.version>
+		<dtd-to-xsd.version>1</dtd-to-xsd.version>
 
 		<dependencies>
 			...

@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>dtd-to-xsd</artifactId>
-	<version>1-SNAPSHOT</version>
+	<version>1</version>
 
 	<name>${project.artifactId}</name>
 
@@ -123,5 +123,114 @@
 		</dependency>
 
 	</dependencies>
+	
+
+	<build>
+
+		<resources>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/package.html</exclude>
+				</excludes>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/site</directory>
+			</resource>
+
+		</resources>
+
+		<testResources>
+
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/package.html</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+
+		</testResources>
+
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<configuration>
+						<instrumentation>
+							<excludes>
+								<!-- abstract classes -->
+								<!-- annotations -->
+								<!-- enums -->
+								<!-- beans -->
+								<!-- exceptions -->
+								<!-- interfaces -->
+								<!-- deprecated classes -->
+								<!-- constant classes with only constants -->
+								<!-- explicit abstract classes -->
+								<!-- explicit annotations -->
+								<!-- explicit bean classes -->
+								<!-- explicit constant classes with only constants -->
+								<!-- explicit delegation classes -->
+								<exclude>de/alpharogroup/dtd/to/xsd/parser/Parser.class</exclude>
+								<!-- explicit deprecated classes -->
+								<!-- explicit enums -->
+								<!-- explicit exceptions -->
+								<!-- explicit interfaces -->
+							</excludes>
+						</instrumentation>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+
+		<plugins>
+
+			<plugin>
+				<inherited>true</inherited>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<inherited>true</inherited>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+
+	</build>
 
 </project>

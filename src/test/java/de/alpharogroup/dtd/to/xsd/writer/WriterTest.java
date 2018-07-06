@@ -56,7 +56,7 @@ public class WriterTest
 		String targetNamespace = model.getTargetNamespace();
 		assertNull(targetNamespace);
 		OutputStream outStream = model.getOutStream();
-		assertNull(outStream);		
+		assertNull(outStream);
 	}
 
 	/**
