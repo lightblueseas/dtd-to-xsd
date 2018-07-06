@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    attributeFormDefault="unqualified" elementFormDefault="qualified">
+    targetNamespace="foo" xmlns:t="foo">
     <xsd:element name="dataset">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="countries"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="federalstates"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="zipcodes"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="addresses"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="appointments"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="categories"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="contactmethods"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_location_data"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="events"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="users"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_addresses"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_locations"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="messages"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_messages"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_ratings"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="topics"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="event_topics"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="images"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="message_recipients"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="offered_event_locations"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="permissions"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="primary_user_addresses"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="profile_federalstates"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="profile_topics"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="rating_descriptions"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="repliesandnotes"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="roles"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="role_permissions"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_contactmethods"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_contacts"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_contacts_allowed_contactmethods"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_images"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="user_roles"/>
-                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="userevents"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:countries"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:federalstates"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:zipcodes"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:addresses"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:appointments"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:categories"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:contactmethods"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:event_location_data"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:events"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:users"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:user_addresses"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:event_locations"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:messages"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:event_messages"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:event_ratings"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:topics"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:event_topics"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:images"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:message_recipients"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:offered_event_locations"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:permissions"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:primary_user_addresses"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:profile_federalstates"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:profile_topics"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:rating_descriptions"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:repliesandnotes"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:roles"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:role_permissions"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:user_contactmethods"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:user_contacts"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:user_contacts_allowed_contactmethods"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:user_images"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:user_roles"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="t:userevents"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

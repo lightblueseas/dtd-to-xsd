@@ -36,7 +36,6 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
 import de.alpharogroup.dtd.to.xsd.writer.Writer;
-import de.alpharogroup.io.StreamExtensions;
 
 /**
  * The class Converter.
@@ -202,13 +201,7 @@ public final class Converter
 				e.printStackTrace(System.err);
 				return;
 			}
-			finally
-			{
-				StreamExtensions.closeOutputStream(outStream);
-			}
 		}
-
-		outStream = System.out;
 
 		final Writer writer = new Writer();
 		writer.setTargetNamespace(targetNamespace);

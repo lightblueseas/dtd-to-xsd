@@ -24,99 +24,224 @@
  */
 package de.alpharogroup.dtd.to.xsd;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import de.alpharogroup.AbstractTestCase;
+import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
+import de.alpharogroup.file.checksum.ChecksumExtensions;
 import de.alpharogroup.file.search.PathFinder;
 
-public class ConverterTest
+/**
+ * The unit test class for the class {@link Converter}.
+ */
+public class ConverterTest extends AbstractTestCase<File, File>
 {
 
-	File dataset = new File(PathFinder.getSrcTestResourcesDir(), "result.xsd");
-	File datasetDtd = new File(PathFinder.getSrcTestResourcesDir(), "dataset.dtd");
+	/** The dataset dtd that will be used for input argument in the conversion. */
+	File datasetDtd;
 
-	File propertiesXsd = new File(PathFinder.getSrcTestResourcesDir(), "properties.xsd");
-	File propertiesDtd = new File(PathFinder.getSrcTestResourcesDir(), "properties.dtd");
+	/** The actual dataset xsd that will be returned from the conversion. */
+	File actualDatasetXsd;
 
+	/** The expected dataset xsd that will be compared with the actual dataset xsd. */
+	File expectedDatasetXsd;
+
+	/**
+	 * The expected dataset with namespace xsd that will be compared with the actual dataset xsd.
+	 */
+	File expectedDatasetWithNamespaceXsd;
+
+	/** The properties dtd that will be used for input argument in the conversion. */
+	File propertiesDtd;
+
+	/** The actual properties xsd that will be returned from the conversion. */
+	File actualPropertiesXsd;
+
+	/** The expected properties xsd that will be compared with the actual properties xsd. */
+	File expectedPropertiesXsd;
+
+	/**
+	 * The expected properties with namespace xsd that will be compared with the actual properties
+	 * xsd.
+	 */
+	File expectedPropertiesWithNamespaceXsd;
+
+	/**
+	 * Sets up method will be invoked before every unit test method
+	 *
+	 * @throws Exception
+	 *             is thrown if an exception occurs
+	 */
 	@BeforeMethod
 	public void setUp() throws Exception
 	{
+		datasetDtd = new File(PathFinder.getSrcTestResourcesDir(), "dataset.dtd");
+		actualDatasetXsd = new File(PathFinder.getSrcTestResourcesDir(), "actual-dataset.xsd");
+		expectedDatasetXsd = new File(PathFinder.getSrcTestResourcesDir(), "expected-dataset.xsd");
+		expectedDatasetWithNamespaceXsd = new File(PathFinder.getSrcTestResourcesDir(),
+			"expected-dataset-with-namespace.xsd");
 
+		propertiesDtd = new File(PathFinder.getSrcTestResourcesDir(), "properties.dtd");
+		actualPropertiesXsd = new File(PathFinder.getSrcTestResourcesDir(),
+			"actual-properties.xsd");
+		expectedPropertiesXsd = new File(PathFinder.getSrcTestResourcesDir(),
+			"expected-properties.xsd");
+		expectedPropertiesWithNamespaceXsd = new File(PathFinder.getSrcTestResourcesDir(),
+			"expected-properties-with-namespace.xsd");
 	}
 
 	@AfterMethod
 	public void tearDown() throws Exception
 	{
-
+		actualDatasetXsd.delete();
+		actualPropertiesXsd.delete();
 	}
 
 	/**
-	 * Test method for {@link Converter#convert(File, File)}
+	 * Test method for {@link Converter#convert(File, File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testConvertFileFile()
+	public void testConvertFileFile() throws IOException
 	{
-		Converter.convert(datasetDtd, dataset);
-		Converter.convert(propertiesDtd, propertiesXsd);
+		actual = Converter.convert(datasetDtd, actualDatasetXsd);
+		expected = expectedDatasetXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
+
+		actual = Converter.convert(propertiesDtd, actualPropertiesXsd);
+		expected = expectedPropertiesXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
 	}
 
 	/**
 	 * Test method for {@link Converter#convert(String, File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testConvertStringFile()
+	public void testConvertStringFile() throws IOException
 	{
-		Converter.convert(datasetDtd.getAbsolutePath(), dataset);
+		actual = Converter.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd);
+		expected = expectedDatasetXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
+
+		actual = Converter.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd);
+		expected = expectedPropertiesXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
 	}
 
 	/**
 	 * Test method for {@link Converter#convert(String, List, String, File)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testConvertStringListOfTypePatternStringFile()
+	public void testConvertStringListOfTypePatternStringFile() throws IOException
 	{
-		// TODO fail("Not yet implemented");
 		String targetNamespace;
-		List<TypePattern> listXsdTypePattern; 
+		List<TypePattern> listXsdTypePattern;
 		String dtdfile;
-		File xsdfile;
-		targetNamespace = "";
-//		listXsdTypePattern = ListFactory.newArrayList();
-//		dtdfile = datasetDtd.getAbsolutePath();
-//		xsdfile = dataset;
-//		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
-		
+
+		targetNamespace = "foo";
+		listXsdTypePattern = ListFactory.newArrayList();
+		dtdfile = datasetDtd.getAbsolutePath();
+		actual = actualDatasetXsd;
+		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, actual);
+		expected = expectedDatasetWithNamespaceXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
+
+		targetNamespace = "bar";
+		listXsdTypePattern = ListFactory.newArrayList();
+		dtdfile = propertiesDtd.getAbsolutePath();
+		actual = actualPropertiesXsd;
+		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, actual);
+		expected = expectedPropertiesWithNamespaceXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
 	}
 
 	/**
 	 * Test method for {@link Converter#convert(String, List, String, String)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testConvertStringListOfTypePatternStringString()
+	public void testConvertStringListOfTypePatternStringString() throws IOException
 	{
-		// TODO fail("Not yet implemented");
 		String targetNamespace;
-		List<TypePattern> listXsdTypePattern; 
+		List<TypePattern> listXsdTypePattern;
 		String dtdfile;
 		String xsdfile;
-		targetNamespace = "";
-//		listXsdTypePattern = ListFactory.newArrayList();
-//		dtdfile = datasetDtd.getAbsolutePath();
-//		xsdfile = dataset.getAbsolutePath();
-//		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
+
+		targetNamespace = "foo";
+		listXsdTypePattern = ListFactory.newArrayList();
+		dtdfile = datasetDtd.getAbsolutePath();
+		xsdfile = actualDatasetXsd.getAbsolutePath();
+		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
+		actual = actualDatasetXsd;
+		expected = expectedDatasetWithNamespaceXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
+
+		targetNamespace = "bar";
+		listXsdTypePattern = ListFactory.newArrayList();
+		dtdfile = propertiesDtd.getAbsolutePath();
+		xsdfile = actualPropertiesXsd.getAbsolutePath();
+		Converter.convert(targetNamespace, listXsdTypePattern, dtdfile, xsdfile);
+		actual = actualPropertiesXsd;
+		expected = expectedPropertiesWithNamespaceXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
 	}
 
 	/**
 	 * Test method for {@link Converter#convert(String, String)}.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
-	public void testConvertStringString()
+	public void testConvertStringString() throws IOException
 	{
-		// TODO fail("Not yet implemented");
+		Converter.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd.getAbsolutePath());
+		actual = actualDatasetXsd;
+		expected = expectedDatasetXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
+
+		Converter.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd.getAbsolutePath());
+		actual = actualPropertiesXsd;
+		expected = expectedPropertiesXsd;
+
+		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
+			ChecksumExtensions.getCheckSumAdler32(expected));
 	}
 }
