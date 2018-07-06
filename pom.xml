@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>2.15.0</version>
+		<version>3.12</version>
 		<relativePath></relativePath>
 	</parent>
 
-	<artifactId>dtd2xsd</artifactId>
-	<version>1.1</version>
+	<artifactId>dtd-to-xsd</artifactId>
+	<version>1-SNAPSHOT</version>
 
 	<name>${project.artifactId}</name>
 
@@ -18,22 +18,22 @@
 		Useful extensions and utilities for convert dtd files to xsd files
 	</description>
 
-	<url>https://github.com/lightblueseas/dtd2xsd</url>
+	<url>https://github.com/lightblueseas/dtd-to-xsd</url>
 
 	<scm>
-		<connection>scm:git:git:@github.com:lightblueseas/dtd2xsd.git</connection>
-		<developerConnection>scm:git:git@github.com:lightblueseas/dtd2xsd.git</developerConnection>
-		<url>git:@github.com:lightblueseas/dtd2xsd.git</url>
+		<connection>scm:git:git:@github.com:lightblueseas/dtd-to-xsd.git</connection>
+		<developerConnection>scm:git:git@github.com:lightblueseas/dtd-to-xsd.git</developerConnection>
+		<url>git:@github.com:lightblueseas/dtd-to-xsd.git</url>
 	</scm>
 
 	<ciManagement>
 		<system>travis-ci</system>
-		<url>https://travis-ci.org/lightblueseas/dtd2xsd</url>
+		<url>https://travis-ci.org/lightblueseas/dtd-to-xsd</url>
 	</ciManagement>
 
 	<issueManagement>
 		<system>github</system>
-		<url>https://github.com/lightblueseas/dtd2xsd/issues</url>
+		<url>https://github.com/lightblueseas/dtd-to-xsd/issues</url>
 	</issueManagement>
 
 
