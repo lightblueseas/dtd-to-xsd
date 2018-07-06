@@ -33,10 +33,11 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 import de.alpharogroup.dtd.to.xsd.configuration.Configuration;
 import de.alpharogroup.dtd.to.xsd.parser.Parser;
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
-
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * The class Writer.
+ * The class {@link Writer}
  *
  * @author Asterios Raptis
  */
@@ -50,6 +51,8 @@ public class Writer
 	private final Parser dtd2XSDParser;
 
 	/** The out stream. */
+	@Getter
+	@Setter
 	private OutputStream outStream;
 
 	/**
@@ -84,16 +87,6 @@ public class Writer
 	}
 
 	/**
-	 * Gets the out stream.
-	 *
-	 * @return the out stream
-	 */
-	public OutputStream getOutStream()
-	{
-		return this.outStream;
-	}
-
-	/**
 	 * Gets the target namespace.
 	 *
 	 * @return the target namespace
@@ -115,17 +108,6 @@ public class Writer
 	{
 		this.dtd2XSDParser.parse(xmlInputSource);
 		this.dtd2XSDParser.writeXsd(this.outStream);
-	}
-
-	/**
-	 * Sets the out stream.
-	 *
-	 * @param outStream
-	 *            the new out stream
-	 */
-	public void setOutStream(final OutputStream outStream)
-	{
-		this.outStream = outStream;
 	}
 
 	/**
