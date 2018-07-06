@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2007 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -58,9 +58,8 @@ import org.w3c.dom.ls.LSSerializer;
 
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
 
-
 /**
- * The class Dtd2XsdParser.
+ * The class {@link Parser} is for parsing dtd document to a xsd document.
  *
  * @author Asterios Raptis
  */
@@ -362,8 +361,8 @@ public class Parser extends XMLDocumentParser
 	 */
 	@Override
 	public void attributeDecl(final String ename, final String aname, final String atype,
-		final String[] enums, final String dtype, final XMLString dvalue,
-		final XMLString nondvalue, final Augmentations augs) throws XNIException
+		final String[] enums, final String dtype, final XMLString dvalue, final XMLString nondvalue,
+		final Augmentations augs) throws XNIException
 	{
 		if (this.hasParsed)
 		{
@@ -883,8 +882,8 @@ public class Parser extends XMLDocumentParser
 	 * @return the element
 	 */
 	private Element newAttribute(final String ename, final String aname, final String atype,
-		final String[] enums, final String dtype, final XMLString dvalue,
-		final XMLString nondvalue, final Augmentations augs)
+		final String[] enums, final String dtype, final XMLString dvalue, final XMLString nondvalue,
+		final Augmentations augs)
 	{
 		final Element attr = this.doc.createElement(XSD_ATTRIBUTE);
 		attr.setAttribute(NAME, aname);
@@ -1330,8 +1329,8 @@ public class Parser extends XMLDocumentParser
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
 	@Override
-	public void startExternalSubset(final XMLResourceIdentifier identifier, final Augmentations augs)
-		throws XNIException
+	public void startExternalSubset(final XMLResourceIdentifier identifier,
+		final Augmentations augs) throws XNIException
 	{
 	}
 

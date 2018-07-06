@@ -3,14 +3,11 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-		<class name="de.alpharogroup.dtd.to.xsd.ConverterTest"/>
-		<class name="de.alpharogroup.xml.sax.handler.OutputStreamWriterHandlerTest"/>
-		<class name="de.alpharogroup.xml.sax.handler.TemplateHandlerTest"/>
-		<class name="de.alpharogroup.xml.to.xsd.XmlToXsdUtilsTest"/>
-		<class name="de.alpharogroup.xml.XmlUtilsTest"/>
-		<class name="de.alpharogroup.xml.xpath.XPathUtilsTest"/>
-		<class name="de.alpharogroup.xsd.schema.ValidatorUtilsTest"/>
-		<class name="de.alpharogroup.xsl.transform.XsltTransformerUtilsTest"/>
+      <class name="de.alpharogroup.dtd.to.xsd.ConverterTest"/>
+      <class name="de.alpharogroup.dtd.to.xsd.configuration.ConfigurationTest"/>
+      <class name="de.alpharogroup.dtd.to.xsd.parser.ParserTest"/>
+      <class name="de.alpharogroup.dtd.to.xsd.type.TypePatternTest"/>
+      <class name="de.alpharogroup.dtd.to.xsd.writer.WriterTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2007 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,14 +24,29 @@
  */
 package de.alpharogroup.dtd.to.xsd.type;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
- * The class TypePattern.
+ * The class {@link TypePattern}
  *
  * @author Asterios Raptis
  */
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class TypePattern
 {
 
@@ -40,47 +55,6 @@ public class TypePattern
 
 	/** The xsd type. */
 	private String xsdType;
-
-	/**
-	 * Instantiates a new xsd type pattern.
-	 */
-	public TypePattern()
-	{
-	}
-
-	/**
-	 * Instantiates a new type pattern.
-	 *
-	 * @param pattern
-	 *            the pattern
-	 * @param xsdType
-	 *            the xsd type
-	 */
-	public TypePattern(final Pattern pattern, final String xsdType)
-	{
-		this.pattern = pattern;
-		this.xsdType = xsdType;
-	}
-
-	/**
-	 * Gets the pattern.
-	 *
-	 * @return the pattern
-	 */
-	public Pattern getPattern()
-	{
-		return this.pattern;
-	}
-
-	/**
-	 * Gets the xsd type.
-	 *
-	 * @return the xsd type
-	 */
-	public String getXsdType()
-	{
-		return this.xsdType;
-	}
 
 	/**
 	 * Match.
@@ -95,29 +69,9 @@ public class TypePattern
 		{
 			return false;
 		}
-
-		return this.pattern.matcher(name).matches();
+		Matcher matcher = this.pattern.matcher(name);
+		boolean matches = matcher.matches();
+		return matches;
 	}
 
-	/**
-	 * Sets the pattern.
-	 *
-	 * @param pattern
-	 *            the new pattern
-	 */
-	public void setPattern(final Pattern pattern)
-	{
-		this.pattern = pattern;
-	}
-
-	/**
-	 * Sets the xsd type.
-	 *
-	 * @param xsdType
-	 *            the new xsd type
-	 */
-	public void setXsdType(final String xsdType)
-	{
-		this.xsdType = xsdType;
-	}
 }
