@@ -41,12 +41,7 @@
 		<file-worker.version>4.22</file-worker.version>
 		<test-objects.version>4.28</test-objects.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<velocity.version>1.7</velocity.version>
-		<xercesImpl.version>2.11.0</xercesImpl.version>
-		<xmlbeans.version>2.6.0</xmlbeans.version>
-		<jettison.version>1.3.7</jettison.version>
-		<xstream.version>1.4.8</xstream.version>
-		<jackson-core.version>2.6.3</jackson-core.version>
+		<xercesImpl.version>2.11.0</xercesImpl.version>		
 	</properties>
 
 	<dependencyManagement>
@@ -57,42 +52,6 @@
 				<groupId>xerces</groupId>
 				<artifactId>xercesImpl</artifactId>
 				<version>${xercesImpl.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.apache.xmlbeans</groupId>
-				<artifactId>xmlbeans</artifactId>
-				<version>${xmlbeans.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.codehaus.jettison</groupId>
-				<artifactId>jettison</artifactId>
-				<version>${jettison.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-				<version>${xstream.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.apache.velocity</groupId>
-				<artifactId>velocity</artifactId>
-				<version>${velocity.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson-core.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.datatype</groupId>
-				<artifactId>jackson-datatype-json-org</artifactId>
-				<version>${jackson-core.version}</version>
 			</dependency>
 
 			<dependency>
@@ -119,40 +78,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.xmlbeans</groupId>
-			<artifactId>xmlbeans</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.codehaus.jettison</groupId>
-			<artifactId>jettison</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-json-org</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>file-worker</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
