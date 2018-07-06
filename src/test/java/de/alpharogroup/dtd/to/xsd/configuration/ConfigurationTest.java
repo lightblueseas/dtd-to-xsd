@@ -24,8 +24,18 @@
  */
 package de.alpharogroup.dtd.to.xsd.configuration;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 
+import java.util.Locale;
+
+import org.apache.xerces.impl.XMLEntityManager;
+import org.apache.xerces.xni.XMLDTDContentModelHandler;
+import org.apache.xerces.xni.XMLDTDHandler;
+import org.apache.xerces.xni.XMLDocumentHandler;
+import org.apache.xerces.xni.parser.XMLEntityResolver;
+import org.apache.xerces.xni.parser.XMLErrorHandler;
 import org.testng.annotations.Test;
 
 /**
@@ -42,6 +52,27 @@ public class ConfigurationTest
 	{
 		Configuration configuration = new Configuration();
 		assertNotNull(configuration);
+		XMLDocumentHandler documentHandler = configuration.getDocumentHandler();
+		assertNull(documentHandler);
+		Locale locale = configuration.getLocale();
+		assertNotNull(locale);
+		configuration.setLocale(Locale.ENGLISH);
+		locale = configuration.getLocale();
+		assertNotNull(locale);
+		assertEquals(locale, Locale.ENGLISH);
+		XMLEntityResolver entityResolver;
+		entityResolver = configuration.getEntityResolver();
+		assertNull(entityResolver);
+		entityResolver = new XMLEntityManager();
+		configuration.setEntityResolver(new XMLEntityManager());
+		XMLEntityResolver actual = configuration.getEntityResolver();
+		assertNotNull(actual);
+		XMLDTDContentModelHandler dtdContentModelHandler = configuration.getDTDContentModelHandler();
+		assertNull(dtdContentModelHandler);
+		XMLDTDHandler dtdHandler = configuration.getDTDHandler();
+		assertNull(dtdHandler);
+		XMLErrorHandler errorHandler = configuration.getErrorHandler();
+		assertNull(errorHandler);
 	}
 
 }
