@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2007 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -58,9 +58,8 @@ import org.w3c.dom.ls.LSSerializer;
 
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
 
-
 /**
- * The class Dtd2XsdParser.
+ * The class {@link Parser} is for parsing dtd document to a xsd document.
  *
  * @author Asterios Raptis
  */
