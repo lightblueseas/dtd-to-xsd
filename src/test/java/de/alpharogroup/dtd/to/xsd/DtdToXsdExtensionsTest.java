@@ -230,14 +230,16 @@ public class DtdToXsdExtensionsTest extends AbstractTestCase<File, File>
 	@Test
 	public void testConvertStringString() throws IOException
 	{
-		DtdToXsdExtensions.convert(datasetDtd.getAbsolutePath(), actualDatasetXsd.getAbsolutePath());
+		DtdToXsdExtensions.convert(datasetDtd.getAbsolutePath(),
+			actualDatasetXsd.getAbsolutePath());
 		actual = actualDatasetXsd;
 		expected = expectedDatasetXsd;
 
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
 			ChecksumExtensions.getCheckSumAdler32(expected));
 
-		DtdToXsdExtensions.convert(propertiesDtd.getAbsolutePath(), actualPropertiesXsd.getAbsolutePath());
+		DtdToXsdExtensions.convert(propertiesDtd.getAbsolutePath(),
+			actualPropertiesXsd.getAbsolutePath());
 		actual = actualPropertiesXsd;
 		expected = expectedPropertiesXsd;
 

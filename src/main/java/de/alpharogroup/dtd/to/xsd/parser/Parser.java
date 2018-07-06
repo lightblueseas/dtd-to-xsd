@@ -362,8 +362,8 @@ public class Parser extends XMLDocumentParser
 	 */
 	@Override
 	public void attributeDecl(final String ename, final String aname, final String atype,
-		final String[] enums, final String dtype, final XMLString dvalue,
-		final XMLString nondvalue, final Augmentations augs) throws XNIException
+		final String[] enums, final String dtype, final XMLString dvalue, final XMLString nondvalue,
+		final Augmentations augs) throws XNIException
 	{
 		if (this.hasParsed)
 		{
@@ -883,8 +883,8 @@ public class Parser extends XMLDocumentParser
 	 * @return the element
 	 */
 	private Element newAttribute(final String ename, final String aname, final String atype,
-		final String[] enums, final String dtype, final XMLString dvalue,
-		final XMLString nondvalue, final Augmentations augs)
+		final String[] enums, final String dtype, final XMLString dvalue, final XMLString nondvalue,
+		final Augmentations augs)
 	{
 		final Element attr = this.doc.createElement(XSD_ATTRIBUTE);
 		attr.setAttribute(NAME, aname);
@@ -1330,8 +1330,8 @@ public class Parser extends XMLDocumentParser
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
 	@Override
-	public void startExternalSubset(final XMLResourceIdentifier identifier, final Augmentations augs)
-		throws XNIException
+	public void startExternalSubset(final XMLResourceIdentifier identifier,
+		final Augmentations augs) throws XNIException
 	{
 	}
 
