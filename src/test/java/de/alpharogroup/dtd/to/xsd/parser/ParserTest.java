@@ -46,6 +46,144 @@ public class ParserTest
 {
 
 	/**
+	 * Test method for
+	 * {@link Parser#error(String, String, org.apache.xerces.xni.parser.XMLParseException)}
+	 */
+	@Test(expectedExceptions = XNIException.class)
+	public final void testError()
+	{
+		Parser parser = new Parser(new Configuration());
+		assertNotNull(parser);
+		parser.error("foo", "Bar", new XMLParseException(new XMLLocator()
+		{
+
+			@Override
+			public String getBaseSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public int getCharacterOffset()
+			{
+				return 0;
+			}
+
+			@Override
+			public int getColumnNumber()
+			{
+				return 0;
+			}
+
+			@Override
+			public String getEncoding()
+			{
+				return null;
+			}
+
+			@Override
+			public String getExpandedSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public int getLineNumber()
+			{
+				return 0;
+			}
+
+			@Override
+			public String getLiteralSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public String getPublicId()
+			{
+				return null;
+			}
+
+			@Override
+			public String getXMLVersion()
+			{
+				return null;
+			}
+
+		}, "foo"));
+	}
+
+	/**
+	 * Test method for
+	 * {@link Parser#error(String, String, org.apache.xerces.xni.parser.XMLParseException)}
+	 */
+	@Test(expectedExceptions = XNIException.class)
+	public final void testFatalError()
+	{
+		Parser parser = new Parser(new Configuration());
+		assertNotNull(parser);
+		parser.fatalError("foo", "Bar", new XMLParseException(new XMLLocator()
+		{
+
+			@Override
+			public String getBaseSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public int getCharacterOffset()
+			{
+				return 0;
+			}
+
+			@Override
+			public int getColumnNumber()
+			{
+				return 0;
+			}
+
+			@Override
+			public String getEncoding()
+			{
+				return null;
+			}
+
+			@Override
+			public String getExpandedSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public int getLineNumber()
+			{
+				return 0;
+			}
+
+			@Override
+			public String getLiteralSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public String getPublicId()
+			{
+				return null;
+			}
+
+			@Override
+			public String getXMLVersion()
+			{
+				return null;
+			}
+
+		}, "foo"));
+	}
+
+	/**
 	 * Test method for {@link Parser} constructors and methods
 	 */
 	@Test
@@ -61,79 +199,86 @@ public class ParserTest
 		assertNull(targetNamespace);
 		model.startParameterEntity("", new XMLResourceIdentifier()
 		{
-			
+
 			@Override
-			public void setPublicId(String publicId)
-			{
-			}
-			
-			@Override
-			public void setNamespace(String namespace)
-			{
-			}
-			
-			@Override
-			public void setLiteralSystemId(String systemId)
-			{
-			}
-			
-			@Override
-			public void setExpandedSystemId(String systemId)
-			{
-			}
-			
-			@Override
-			public void setBaseSystemId(String systemId)
-			{
-			}
-			
-			@Override
-			public String getPublicId()
+			public String getBaseSystemId()
 			{
 				return null;
 			}
-			
+
+			@Override
+			public String getExpandedSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public String getLiteralSystemId()
+			{
+				return null;
+			}
+
 			@Override
 			public String getNamespace()
 			{
 				return null;
 			}
-			
+
 			@Override
-			public String getLiteralSystemId()
+			public String getPublicId()
 			{
 				return null;
 			}
-			
+
 			@Override
-			public String getExpandedSystemId()
+			public void setBaseSystemId(String systemId)
 			{
-				return null;
 			}
-			
+
 			@Override
-			public String getBaseSystemId()
+			public void setExpandedSystemId(String systemId)
 			{
-				return null;
+			}
+
+			@Override
+			public void setLiteralSystemId(String systemId)
+			{
+			}
+
+			@Override
+			public void setNamespace(String namespace)
+			{
+			}
+
+			@Override
+			public void setPublicId(String publicId)
+			{
 			}
 		}, "UTF-8", null);
-		
-		model.warning("foo", "bar", new XMLParseException(new XMLLocator(){
 
-			@Override
-			public String getPublicId()
-			{
-				return null;
-			}
-
-			@Override
-			public String getLiteralSystemId()
-			{
-				return null;
-			}
+		model.warning("foo", "bar", new XMLParseException(new XMLLocator()
+		{
 
 			@Override
 			public String getBaseSystemId()
+			{
+				return null;
+			}
+
+			@Override
+			public int getCharacterOffset()
+			{
+				return 0;
+			}
+
+			@Override
+			public int getColumnNumber()
+			{
+				return 0;
+			}
+
+			@Override
+			public String getEncoding()
 			{
 				return null;
 			}
@@ -151,42 +296,10 @@ public class ParserTest
 			}
 
 			@Override
-			public int getColumnNumber()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getCharacterOffset()
-			{
-				return 0;
-			}
-
-			@Override
-			public String getEncoding()
+			public String getLiteralSystemId()
 			{
 				return null;
 			}
-
-			@Override
-			public String getXMLVersion()
-			{
-				return null;
-			}
-			
-		}, "foo"));
-			
-		
-	}
-	
-	/**
-	 * Test method for {@link Parser#error(String, String, org.apache.xerces.xni.parser.XMLParseException)} 
-	 */
-	@Test(expectedExceptions = XNIException.class)
-	public final void testError() {
-		Parser parser = new Parser(new Configuration());
-		assertNotNull(parser);
-		parser.error("foo", "Bar", new XMLParseException(new XMLLocator(){
 
 			@Override
 			public String getPublicId()
@@ -195,120 +308,14 @@ public class ParserTest
 			}
 
 			@Override
-			public String getLiteralSystemId()
-			{
-				return null;
-			}
-
-			@Override
-			public String getBaseSystemId()
-			{
-				return null;
-			}
-
-			@Override
-			public String getExpandedSystemId()
-			{
-				return null;
-			}
-
-			@Override
-			public int getLineNumber()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getColumnNumber()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getCharacterOffset()
-			{
-				return 0;
-			}
-
-			@Override
-			public String getEncoding()
-			{
-				return null;
-			}
-
-			@Override
 			public String getXMLVersion()
 			{
 				return null;
 			}
-			
+
 		}, "foo"));
-	}
-	
-	/**
-	 * Test method for {@link Parser#error(String, String, org.apache.xerces.xni.parser.XMLParseException)} 
-	 */
-	@Test(expectedExceptions = XNIException.class)
-	public final void testFatalError() {
-		Parser parser = new Parser(new Configuration());
-		assertNotNull(parser);
-		parser.fatalError("foo", "Bar", new XMLParseException(new XMLLocator(){
 
-			@Override
-			public String getPublicId()
-			{
-				return null;
-			}
 
-			@Override
-			public String getLiteralSystemId()
-			{
-				return null;
-			}
-
-			@Override
-			public String getBaseSystemId()
-			{
-				return null;
-			}
-
-			@Override
-			public String getExpandedSystemId()
-			{
-				return null;
-			}
-
-			@Override
-			public int getLineNumber()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getColumnNumber()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getCharacterOffset()
-			{
-				return 0;
-			}
-
-			@Override
-			public String getEncoding()
-			{
-				return null;
-			}
-
-			@Override
-			public String getXMLVersion()
-			{
-				return null;
-			}
-			
-		}, "foo"));
 	}
 
 }
