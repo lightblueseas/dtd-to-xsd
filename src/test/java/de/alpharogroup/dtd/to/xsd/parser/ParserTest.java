@@ -51,15 +51,15 @@ public class ParserTest
 	@Test
 	public final void testParser()
 	{
-		Parser parser = new Parser(new Configuration());
-		assertNotNull(parser);
+		Parser model = new Parser(new Configuration());
+		assertNotNull(model);
 		List<TypePattern> typePatterns = ListFactory.newArrayList(TypePattern.builder().build());
-		parser.addXsdTypePattern(typePatterns);
-		parser.addXsdTypePattern(TypePattern.builder().build());
-		parser.endParameterEntity("foo", null);
-		String targetNamespace = parser.getTargetNamespace();
+		model.addXsdTypePattern(typePatterns);
+		model.addXsdTypePattern(TypePattern.builder().build());
+		model.endParameterEntity("foo", null);
+		String targetNamespace = model.getTargetNamespace();
 		assertNull(targetNamespace);
-		parser.startParameterEntity("", new XMLResourceIdentifier()
+		model.startParameterEntity("", new XMLResourceIdentifier()
 		{
 			
 			@Override
@@ -118,7 +118,7 @@ public class ParserTest
 			}
 		}, "UTF-8", null);
 		
-		parser.warning("foo", "bar", new XMLParseException(new XMLLocator(){
+		model.warning("foo", "bar", new XMLParseException(new XMLLocator(){
 
 			@Override
 			public String getPublicId()

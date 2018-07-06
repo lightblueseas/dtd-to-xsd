@@ -25,9 +25,16 @@
 package de.alpharogroup.dtd.to.xsd.writer;
 
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
+
+import java.io.OutputStream;
+import java.util.List;
 
 import org.apache.xerces.xni.parser.XMLInputSource;
 import org.testng.annotations.Test;
+
+import de.alpharogroup.collections.list.ListFactory;
+import de.alpharogroup.dtd.to.xsd.type.TypePattern;
 
 /**
  * The unit test class for the class {@link Writer}
@@ -43,6 +50,13 @@ public class WriterTest
 	{
 		Writer model = new Writer();
 		assertNotNull(model);
+		List<TypePattern> typePatterns = ListFactory.newArrayList(TypePattern.builder().build());
+		model.addXsdTypePattern(typePatterns);
+		model.addXsdTypePattern(TypePattern.builder().build());
+		String targetNamespace = model.getTargetNamespace();
+		assertNull(targetNamespace);
+		OutputStream outStream = model.getOutStream();
+		assertNull(outStream);		
 	}
 
 	/**

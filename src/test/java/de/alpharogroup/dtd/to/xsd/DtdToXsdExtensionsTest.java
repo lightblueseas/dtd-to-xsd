@@ -30,6 +30,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.meanbean.factories.ObjectCreationException;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -246,4 +249,15 @@ public class DtdToXsdExtensionsTest extends AbstractTestCase<File, File>
 		assertEquals(ChecksumExtensions.getCheckSumAdler32(actual),
 			ChecksumExtensions.getCheckSumAdler32(expected));
 	}
+
+	/**
+	 * Test method for {@link DtdToXsdExtensions}
+	 */
+	@Test(expectedExceptions = { BeanTestException.class, ObjectCreationException.class })
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(DtdToXsdExtensions.class);
+	}
+	
 }

@@ -36,7 +36,6 @@
 		<url>https://github.com/lightblueseas/dtd-to-xsd/issues</url>
 	</issueManagement>
 
-
 	<properties>
 		<file-worker.version>4.22</file-worker.version>
 		<test-objects.version>4.28</test-objects.version>
