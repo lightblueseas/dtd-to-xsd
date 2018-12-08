@@ -85,4 +85,16 @@ Open Source:
 
  * [dtd2xsdjava](https://code.google.com/archive/p/dtd2xsdjava/) Convert dtd files to xml schema definition file
 
+## Credits
+
+|Travis CI|
+|:-:|
+|![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)|
+|Many thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects.|
+|![sonatype repository](https://avatars1.githubusercontent.com/u/33330803?s=200&v=4)|
+|Many thanks to [sonatype repository](https://oss.sonatype.org) for providing a free maven repository service for open source projects.|
+|![Coverage Status](https://coveralls.io/repos/github/lightblueseas/dtd-to-xsd/badge.svg)|
+|Many thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects.|
+|![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/dtd-to-xsd.svg)|
+|Many thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects.|
 
