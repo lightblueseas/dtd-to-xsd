@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import java.util.logging.Level;
 
 import org.apache.xerces.dom.CoreDOMImplementationImpl;
 import org.apache.xerces.parsers.XMLDocumentParser;
@@ -58,14 +59,15 @@ import de.alpharogroup.collections.list.ListFactory;
 import de.alpharogroup.collections.map.MapFactory;
 import de.alpharogroup.collections.set.SetFactory;
 import de.alpharogroup.dtd.to.xsd.type.TypePattern;
-import lombok.extern.slf4j.Slf4j;
+import de.alpharogroup.throwable.ThrowableExtensions;
+import lombok.extern.java.Log;
 
 /**
  * The class {@link Parser} is for parsing dtd document to a xsd document.
  *
  * @author Asterios Raptis
  */
-@Slf4j
+@Log
 public class Parser extends XMLDocumentParser
 	implements
 		XMLDTDHandler,
@@ -73,128 +75,29 @@ public class Parser extends XMLDocumentParser
 		XMLErrorHandler
 {
 
-	/** The Constant XSD_SCHEMA. */
-	private static final String XSD_SCHEMA = "xsd:schema";
-
-	/** The Constant HTTP_WWW_W3_ORG_2001_XML_SCHEMA. */
-	private static final String HTTP_WWW_W3_ORG_2001_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
-
-	/** The Constant FORMAT_PRETTY_PRINT. */
-	private static final String FORMAT_PRETTY_PRINT = "format-pretty-print";
-
-	/** The Constant UTF_8. */
-	private static final String UTF_8 = "UTF-8";
-
-	/** The Constant ATTRIBUTE_PUBLIC. */
-	private static final String ATTRIBUTE_PUBLIC = "public";
-
-	/** The Constant XSD_NOTATION_LOWERCASE. */
-	private static final String XSD_NOTATION_LOWERCASE = "xsd:notation";
-
-	/** The Constant PCDATA. */
-	private static final String PCDATA = "PCDATA";
-
-	/** The Constant XSD_CHOICE. */
-	private static final String XSD_CHOICE = "xsd:choice";
-
-	/** The Constant XSD_SEQUENCE. */
-	private static final String XSD_SEQUENCE = "xsd:sequence";
-
 	/** The Constant ATTRIBUTE_DEFAULT. */
 	private static final String ATTRIBUTE_DEFAULT = "default";
-
-	/** The Constant OPTIONAL. */
-	private static final String OPTIONAL = "optional";
 
 	/** The Constant ATTRIBUTE_FIXED. */
 	private static final String ATTRIBUTE_FIXED = "fixed";
 
-	/** The Constant FIXED_TYPE. */
-	private static final String FIXED_TYPE = "#FIXED";
-
-	/** The Constant REQUIRED. */
-	private static final String REQUIRED = "required";
-
-	/** The Constant USE. */
-	private static final String USE = "use";
-
-	/** The Constant REQUIRED_TYPE. */
-	private static final String REQUIRED_TYPE = "#REQUIRED";
-
-	/** The Constant XSD_SIMPLE_TYPE. */
-	private static final String XSD_SIMPLE_TYPE = "xsd:simpleType";
-
-	/** The Constant ATTRIBUTE_VALUE. */
-	private static final String ATTRIBUTE_VALUE = "value";
-
-	/** The Constant XSD_ENUMERATION. */
-	private static final String XSD_ENUMERATION = "xsd:enumeration";
-
-	/** The Constant BASE. */
-	private static final String BASE = "base";
-
-	/** The Constant XSD_RESTRICTION. */
-	private static final String XSD_RESTRICTION = "xsd:restriction";
-
-	/** The Constant ENUMERATION_TYPE. */
-	private static final String ENUMERATION_TYPE = "ENUMERATION";
-
-	/** The Constant NAME. */
-	private static final String NAME = "name";
-
-	/** The Constant XSD_ATTRIBUTE. */
-	private static final String XSD_ATTRIBUTE = "xsd:attribute";
-
-	/** The Constant MAX_OCCURS. */
-	private static final String MAX_OCCURS = "maxOccurs";
-
-	/** The Constant MIN_OCCURS. */
-	private static final String MIN_OCCURS = "minOccurs";
+	/** The Constant ATTRIBUTE_PUBLIC. */
+	private static final String ATTRIBUTE_PUBLIC = "public";
 
 	/** The Constant ATTRIBUTE_REF. */
 	private static final String ATTRIBUTE_REF = "ref";
 
-	/** The Constant XSD_ELEMENT. */
-	private static final String XSD_ELEMENT = "xsd:element";
-
-	/** The Constant MIXED. */
-	private static final String MIXED = "mixed";
-
 	/** The Constant ATTRIBUTE_TYPE. */
 	private static final String ATTRIBUTE_TYPE = "type";
 
-	/** The Constant XSD_COMPLEX_TYPE. */
-	private static final String XSD_COMPLEX_TYPE = "xsd:complexType";
+	/** The Constant ATTRIBUTE_VALUE. */
+	private static final String ATTRIBUTE_VALUE = "value";
 
-	/** The Constant XSD_NOTATION. */
-	private static final String XSD_NOTATION = "xsd:NOTATION";
+	/** The Constant BASE. */
+	private static final String BASE = "base";
 
-	/** The Constant XSD_NMTOKENS. */
-	private static final String XSD_NMTOKENS = "xsd:NMTOKENS";
-
-	/** The Constant XSD_NMTOKEN. */
-	private static final String XSD_NMTOKEN = "xsd:NMTOKEN";
-
-	/** The Constant XSD_ENTITIES. */
-	private static final String XSD_ENTITIES = "xsd:ENTITIES";
-
-	/** The Constant XSD_ENTITY. */
-	private static final String XSD_ENTITY = "xsd:ENTITY";
-
-	/** The Constant XSD_IDREFS. */
-	private static final String XSD_IDREFS = "xsd:IDREFS";
-
-	/** The Constant XSD_STRING. */
-	private static final String XSD_STRING = "xsd:string";
-
-	/** The Constant XSD_IDREF. */
-	private static final String XSD_IDREF = "xsd:IDREF";
-
-	/** The Constant XSD_ID. */
-	private static final String XSD_ID = "xsd:ID";
-
-	/** This Constant is for the dtd name NOTATION. */
-	private static final String DTD_NOTATION = "NOTATION";
+	/** This Constant is for the dtd name CDATA. */
+	private static final String DTD_CDATA = "CDATA";
 
 	/** This Constant is for the dtd name ENTITIES. */
 	private static final String DTD_ENTITIES = "ENTITIES";
@@ -202,59 +105,122 @@ public class Parser extends XMLDocumentParser
 	/** This Constant is for the dtd name ENTITY. */
 	private static final String DTD_ENTITY = "ENTITY";
 
-	/** This Constant is for the dtd name NMTOKENS. */
-	private static final String DTD_NMTOKENS = "NMTOKENS";
-
-	/** This Constant is for the dtd name NMTOKEN. */
-	private static final String DTD_NMTOKEN = "NMTOKEN";
-
-	/** This Constant is for the dtd name IDREFS. */
-	private static final String DTD_IDREFS = "IDREFS";
+	/** This Constant is for the dtd name ID. */
+	private static final String DTD_ID = "ID";
 
 	/** This Constant is for the dtd name IDREF. */
 	private static final String DTD_IDREF = "IDREF";
 
-	/** This Constant is for the dtd name ID. */
-	private static final String DTD_ID = "ID";
+	/** This Constant is for the dtd name IDREFS. */
+	private static final String DTD_IDREFS = "IDREFS";
 
-	/** This Constant is for the dtd name CDATA. */
-	private static final String DTD_CDATA = "CDATA";
+	/** This Constant is for the dtd name NMTOKEN. */
+	private static final String DTD_NMTOKEN = "NMTOKEN";
 
-	/** The type. */
-	private String type = "";
+	/** This Constant is for the dtd name NMTOKENS. */
+	private static final String DTD_NMTOKENS = "NMTOKENS";
 
-	/** The dom impl. */
-	private CoreDOMImplementationImpl domImpl;
+	/** This Constant is for the dtd name NOTATION. */
+	private static final String DTD_NOTATION = "NOTATION";
 
-	/** The doc. */
-	private Document doc;
+	/** The Constant ENUMERATION_TYPE. */
+	private static final String ENUMERATION_TYPE = "ENUMERATION";
 
-	/** The root. */
-	private Element root;
+	/** The Constant FIXED_TYPE. */
+	private static final String FIXED_TYPE = "#FIXED";
 
-	/** The stack elements. */
-	private final Stack<Element> stackElements;
+	/** The Constant FORMAT_PRETTY_PRINT. */
+	private static final String FORMAT_PRETTY_PRINT = "format-pretty-print";
 
-	/** The target namespace. */
-	private String targetNamespace;
+	/** The Constant HTTP_WWW_W3_ORG_2001_XML_SCHEMA. */
+	private static final String HTTP_WWW_W3_ORG_2001_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
 
-	/** The set xml resource identifier. */
-	private final Set<String> setXmlResourceIdentifier;
+	/** The Constant MAX_OCCURS. */
+	private static final String MAX_OCCURS = "maxOccurs";
 
-	/** The has parsed. */
-	private boolean hasParsed = false;
+	/** The Constant MIN_OCCURS. */
+	private static final String MIN_OCCURS = "minOccurs";
 
-	/** The parsed stack. */
-	private final Stack<Boolean> parsedStack;
+	/** The Constant MIXED. */
+	private static final String MIXED = "mixed";
 
-	/** The group depth. */
-	private int groupDepth = 0;
+	/** The Constant NAME. */
+	private static final String NAME = "name";
 
-	/** The list group types. */
-	private final List<Short> listGroupTypes;
+	/** The Constant OPTIONAL. */
+	private static final String OPTIONAL = "optional";
 
-	/** The list group elements. */
-	private final List<List<Element>> listGroupElements;
+	/** The Constant PCDATA. */
+	private static final String PCDATA = "PCDATA";
+
+	/** The Constant REQUIRED. */
+	private static final String REQUIRED = "required";
+
+	/** The Constant REQUIRED_TYPE. */
+	private static final String REQUIRED_TYPE = "#REQUIRED";
+
+	/** The Constant USE. */
+	private static final String USE = "use";
+
+	/** The Constant UTF_8. */
+	private static final String UTF_8 = "UTF-8";
+
+	/** The Constant XSD_ATTRIBUTE. */
+	private static final String XSD_ATTRIBUTE = "xsd:attribute";
+
+	/** The Constant XSD_CHOICE. */
+	private static final String XSD_CHOICE = "xsd:choice";
+
+	/** The Constant XSD_COMPLEX_TYPE. */
+	private static final String XSD_COMPLEX_TYPE = "xsd:complexType";
+
+	/** The Constant XSD_ELEMENT. */
+	private static final String XSD_ELEMENT = "xsd:element";
+
+	/** The Constant XSD_ENTITIES. */
+	private static final String XSD_ENTITIES = "xsd:ENTITIES";
+
+	/** The Constant XSD_ENTITY. */
+	private static final String XSD_ENTITY = "xsd:ENTITY";
+
+	/** The Constant XSD_ENUMERATION. */
+	private static final String XSD_ENUMERATION = "xsd:enumeration";
+
+	/** The Constant XSD_ID. */
+	private static final String XSD_ID = "xsd:ID";
+
+	/** The Constant XSD_IDREF. */
+	private static final String XSD_IDREF = "xsd:IDREF";
+
+	/** The Constant XSD_IDREFS. */
+	private static final String XSD_IDREFS = "xsd:IDREFS";
+
+	/** The Constant XSD_NMTOKEN. */
+	private static final String XSD_NMTOKEN = "xsd:NMTOKEN";
+
+	/** The Constant XSD_NMTOKENS. */
+	private static final String XSD_NMTOKENS = "xsd:NMTOKENS";
+
+	/** The Constant XSD_NOTATION. */
+	private static final String XSD_NOTATION = "xsd:NOTATION";
+
+	/** The Constant XSD_NOTATION_LOWERCASE. */
+	private static final String XSD_NOTATION_LOWERCASE = "xsd:notation";
+
+	/** The Constant XSD_RESTRICTION. */
+	private static final String XSD_RESTRICTION = "xsd:restriction";
+
+	/** The Constant XSD_SCHEMA. */
+	private static final String XSD_SCHEMA = "xsd:schema";
+
+	/** The Constant XSD_SEQUENCE. */
+	private static final String XSD_SEQUENCE = "xsd:sequence";
+
+	/** The Constant XSD_SIMPLE_TYPE. */
+	private static final String XSD_SIMPLE_TYPE = "xsd:simpleType";
+
+	/** The Constant XSD_STRING. */
+	private static final String XSD_STRING = "xsd:string";
 
 	/** The all elements. */
 	private final Map<String, Element> allElements;
@@ -262,8 +228,44 @@ public class Parser extends XMLDocumentParser
 	/** The data type map. */
 	private final Map<String, String> dataTypeMap;
 
+	/** The doc. */
+	private Document doc;
+
+	/** The dom impl. */
+	private CoreDOMImplementationImpl domImpl;
+
+	/** The group depth. */
+	private int groupDepth = 0;
+
+	/** The has parsed. */
+	private boolean hasParsed = false;
+
+	/** The list group elements. */
+	private final List<List<Element>> listGroupElements;
+
+	/** The list group types. */
+	private final List<Short> listGroupTypes;
+
 	/** The list xsd type pattern. */
 	private final List<TypePattern> listXsdTypePattern;
+
+	/** The parsed stack. */
+	private final Stack<Boolean> parsedStack;
+
+	/** The root. */
+	private Element root;
+
+	/** The set xml resource identifier. */
+	private final Set<String> setXmlResourceIdentifier;
+
+	/** The stack elements. */
+	private final Stack<Element> stackElements;
+
+	/** The target namespace. */
+	private String targetNamespace;
+
+	/** The type. */
+	private String type = "";
 
 	/**
 	 * Instantiates a new dtd to xsd parser.
@@ -503,7 +505,7 @@ public class Parser extends XMLDocumentParser
 			return;
 		}
 
-		if (log.isDebugEnabled())
+		if (log.isLoggable(Level.FINE))
 		{
 			printDomNode(this.root);
 		}
@@ -545,7 +547,7 @@ public class Parser extends XMLDocumentParser
 				this.stackElements.add(seq_cho);
 			}
 		}
-		if (log.isDebugEnabled())
+		if (log.isLoggable(Level.FINE))
 		{
 			printDomNode(this.stackElements.peek());
 		}
@@ -775,7 +777,7 @@ public class Parser extends XMLDocumentParser
 
 		final Element element = this.stackElements.peek();
 		setOccursAttributes(element, type);
-		if (log.isDebugEnabled())
+		if (log.isLoggable(Level.FINE))
 		{
 			printDomNode(element);
 		}
@@ -817,7 +819,7 @@ public class Parser extends XMLDocumentParser
 		writer.getDomConfig().setParameter(FORMAT_PRETTY_PRINT, Boolean.TRUE);
 		writer.write(node, output);
 		final String str = output.getCharacterStream().toString();
-		log.debug(str);
+		log.info(str);
 	}
 
 	/**
@@ -978,7 +980,9 @@ public class Parser extends XMLDocumentParser
 	public void warning(final String domain, final String key, final XMLParseException exception)
 		throws XNIException
 	{
-		log.warn("domain=" + domain + ", key=" + key + ", exception=" + exception, exception);
+		// log.warn("domain=" + domain + ", key=" + key + ", exception=" + exception, exception);
+		log.log(Level.WARNING, exception, () -> "domain=" + domain + ", key=" + key
+			+ ThrowableExtensions.getStackTraceElements(exception));
 	}
 
 	/**

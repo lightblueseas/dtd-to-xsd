@@ -49,28 +49,22 @@ import de.alpharogroup.file.search.PathFinder;
 public class DtdToXsdExtensionsTest extends AbstractTestCase<File, File>
 {
 
-	/** The dataset dtd that will be used for input argument in the conversion. */
-	File datasetDtd;
-
 	/** The actual dataset xsd that will be returned from the conversion. */
 	File actualDatasetXsd;
 
-	/** The expected dataset xsd that will be compared with the actual dataset xsd. */
-	File expectedDatasetXsd;
+	/** The actual properties xsd that will be returned from the conversion. */
+	File actualPropertiesXsd;
+
+	/** The dataset dtd that will be used for input argument in the conversion. */
+	File datasetDtd;
 
 	/**
 	 * The expected dataset with namespace xsd that will be compared with the actual dataset xsd.
 	 */
 	File expectedDatasetWithNamespaceXsd;
 
-	/** The properties dtd that will be used for input argument in the conversion. */
-	File propertiesDtd;
-
-	/** The actual properties xsd that will be returned from the conversion. */
-	File actualPropertiesXsd;
-
-	/** The expected properties xsd that will be compared with the actual properties xsd. */
-	File expectedPropertiesXsd;
+	/** The expected dataset xsd that will be compared with the actual dataset xsd. */
+	File expectedDatasetXsd;
 
 	/**
 	 * The expected properties with namespace xsd that will be compared with the actual properties
@@ -78,12 +72,19 @@ public class DtdToXsdExtensionsTest extends AbstractTestCase<File, File>
 	 */
 	File expectedPropertiesWithNamespaceXsd;
 
+	/** The expected properties xsd that will be compared with the actual properties xsd. */
+	File expectedPropertiesXsd;
+
+	/** The properties dtd that will be used for input argument in the conversion. */
+	File propertiesDtd;
+
 	/**
 	 * Sets up method will be invoked before every unit test method
 	 *
 	 * @throws Exception
 	 *             is thrown if an exception occurs
 	 */
+	@Override
 	@BeforeMethod
 	public void setUp() throws Exception
 	{
@@ -102,6 +103,7 @@ public class DtdToXsdExtensionsTest extends AbstractTestCase<File, File>
 			"expected-properties-with-namespace.xsd");
 	}
 
+	@Override
 	@AfterMethod
 	public void tearDown() throws Exception
 	{

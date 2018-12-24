@@ -50,8 +50,11 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
 public class Configuration extends ParserConfigurationSettings implements XMLParserConfiguration
 {
 
-	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_LOCALE. */
-	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_LOCALE = "http://apache.org/xml/properties/locale";
+	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_MANAGER. */
+	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_MANAGER = "http://apache.org/xml/properties/internal/entity-manager";
+
+	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_RESOLVER. */
+	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_RESOLVER = "http://apache.org/xml/properties/internal/entity-resolver";
 
 	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ERROR_HANDLER. */
 	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ERROR_HANDLER = "http://apache.org/xml/properties/internal/error-handler";
@@ -59,14 +62,11 @@ public class Configuration extends ParserConfigurationSettings implements XMLPar
 	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ERROR_REPORTER. */
 	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ERROR_REPORTER = "http://apache.org/xml/properties/internal/error-reporter";
 
-	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_RESOLVER. */
-	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_RESOLVER = "http://apache.org/xml/properties/internal/entity-resolver";
-
-	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_MANAGER. */
-	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_ENTITY_MANAGER = "http://apache.org/xml/properties/internal/entity-manager";
-
 	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_SYMBOL_TABLE. */
 	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_INTERNAL_SYMBOL_TABLE = "http://apache.org/xml/properties/internal/symbol-table";
+
+	/** The Constant HTTP_APACHE_ORG_XML_PROPERTIES_LOCALE. */
+	private static final String HTTP_APACHE_ORG_XML_PROPERTIES_LOCALE = "http://apache.org/xml/properties/locale";
 
 	/** The Constant HTTP_XML_ORG_SAX_FEATURES_VALIDATION. */
 	private static final String HTTP_XML_ORG_SAX_FEATURES_VALIDATION = "http://xml.org/sax/features/validation";

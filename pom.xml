@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>3.12</version>
+		<version>4.5</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -37,15 +38,17 @@
 	</issueManagement>
 
 	<properties>
-		<file-worker.version>4.22</file-worker.version>
-		<test-objects.version>4.28</test-objects.version>
+		<!-- THROW-ABLE version -->
+		<throw-able.version>1</throw-able.version>
+		<file-worker.version>5.0.1</file-worker.version>
+		<test-objects.version>5</test-objects.version>
 		<!-- SILLY-COLLECTIONS version -->
-		<silly-collections.version>4.31</silly-collections.version>
+		<silly-collections.version>5</silly-collections.version>
 		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>1.11</jobject-extensions.version>
+		<jobject-extensions.version>2.5</jobject-extensions.version>
 		<jobject-evaluate.version>${jobject-extensions.version}</jobject-evaluate.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<xercesImpl.version>2.11.0</xercesImpl.version>
+		<xercesImpl.version>2.12.0</xercesImpl.version>
 	</properties>
 
 	<dependencyManagement>
@@ -80,6 +83,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jobject-evaluate</artifactId>
 				<version>${jobject-evaluate.version}</version>
+			</dependency>
+			<!-- THROW-ABLE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>throw-able</artifactId>
+				<version>${throw-able.version}</version>
 			</dependency>
 
 		</dependencies>
@@ -121,9 +130,14 @@
 			<artifactId>jobject-evaluate</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- THROW-ABLE DEPENDENCY -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>throw-able</artifactId>
+		</dependency>
 
 	</dependencies>
-	
+
 
 	<build>
 
