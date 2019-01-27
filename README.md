@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Build Status](https://travis-ci.org/lightblueseas/dtd-to-xsd.svg?branch=master)](https://travis-ci.org/lightblueseas/dtd-to-xsd) 
-[![Coverage Status](https://coveralls.io/repos/github/lightblueseas/dtd-to-xsd/badge.svg?branch=develop)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=master)
+[![Build Status](https://travis-ci.org/lightblueseas/dtd-to-xsd.svg?branch=develop)](https://travis-ci.org/lightblueseas/dtd-to-xsd) 
+[![Coverage Status](https://coveralls.io/repos/github/lightblueseas/dtd-to-xsd/badge.svg?branch=develop)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=develop)
 [![Open Issues](https://img.shields.io/github/issues/lightblueseas/dtd-to-xsd.svg?style=flat)](https://github.com/lightblueseas/dtd-to-xsd/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/dtd-to-xsd/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/dtd-to-xsd)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/dtd-to-xsd.svg)](http://www.javadoc.io/doc/de.alpharogroup/dtd-to-xsd)
@@ -89,7 +89,7 @@ Open Source:
 
 |**Travis CI**|
 |     :---:      |
-|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=master)|
+|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=develop)|
 |Special thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects|
 |     <img width=1000/>     |
 
@@ -101,7 +101,7 @@ Open Source:
 
 |**coveralls.io**|
 |     :---:      |
-|[![Coverage Status](https://coveralls.io/repos/github/lightblueseas/dtd-to-xsd/badge.svg?branch=develop)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=master)|
+|[![Coverage Status](https://coveralls.io/repos/github/lightblueseas/dtd-to-xsd/badge.svg?branch=develop)](https://coveralls.io/github/lightblueseas/dtd-to-xsd?branch=develop)|
 |Special thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 
