@@ -7,6 +7,7 @@
 [![Open Issues](https://img.shields.io/github/issues/lightblueseas/dtd-to-xsd.svg?style=flat)](https://github.com/lightblueseas/dtd-to-xsd/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/dtd-to-xsd/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/dtd-to-xsd)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/dtd-to-xsd.svg)](http://www.javadoc.io/doc/de.alpharogroup/dtd-to-xsd)
+[![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
 </div>
 
