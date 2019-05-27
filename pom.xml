@@ -40,7 +40,7 @@
 	<properties>
 		<!-- THROW-ABLE version -->
 		<throw-able.version>1</throw-able.version>
-		<file-worker.version>5.2.1</file-worker.version>
+		<file-worker.version>5.2</file-worker.version>
 		<test-objects.version>5.2</test-objects.version>
 		<!-- SILLY-COLLECTIONS version -->
 		<silly-collections.version>5.2.1</silly-collections.version>

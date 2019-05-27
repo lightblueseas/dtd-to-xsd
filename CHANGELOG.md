@@ -7,7 +7,7 @@ Version 1.1-SNAPSHOT
 CHANGED:
 
 - update of parent version to 5
-- update of dependency file-worker version to 5.2.1
+- update of dependency file-worker version to 5.2
 - update of dependency silly-collections version to 5.2.1
 - update of test-objects dependency version to 5.2
 - replace of jobject-evaluate dependency with jobj-contract-verifier dependency
