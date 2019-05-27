@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-java-parent</artifactId>
-		<version>4.5</version>
+		<version>5</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -40,13 +40,12 @@
 	<properties>
 		<!-- THROW-ABLE version -->
 		<throw-able.version>1</throw-able.version>
-		<file-worker.version>5.0.1</file-worker.version>
-		<test-objects.version>5</test-objects.version>
+		<file-worker.version>5.2.1</file-worker.version>
+		<test-objects.version>5.2</test-objects.version>
 		<!-- SILLY-COLLECTIONS version -->
-		<silly-collections.version>5</silly-collections.version>
-		<!-- JOBJECT-EXTENSIONS versions -->
-		<jobject-extensions.version>2.5</jobject-extensions.version>
-		<jobject-evaluate.version>${jobject-extensions.version}</jobject-evaluate.version>
+		<silly-collections.version>5.2.1</silly-collections.version>
+		<!-- JOBJ-CONTRACT-VERIFIER version -->
+		<jobj-contract-verifier.version>3.2</jobj-contract-verifier.version>
 		<!-- EXTERNAL LIBRARIES versions -->
 		<xercesImpl.version>2.12.0</xercesImpl.version>
 	</properties>
@@ -78,11 +77,11 @@
 				<artifactId>silly-collections</artifactId>
 				<version>${silly-collections.version}</version>
 			</dependency>
-			<!-- JOBJECT-EVALUATE DEPENDENCY -->
+			<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
-				<artifactId>jobject-evaluate</artifactId>
-				<version>${jobject-evaluate.version}</version>
+				<artifactId>jobj-contract-verifier</artifactId>
+				<version>${jobj-contract-verifier.version}</version>
 			</dependency>
 			<!-- THROW-ABLE DEPENDENCY -->
 			<dependency>
@@ -124,10 +123,10 @@
 			<artifactId>meanbean</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- JOBJECT-EVALUATE DEPENDENCY -->
+		<!-- JOBJ-CONTRACT-VERIFIER DEPENDENCY -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jobject-evaluate</artifactId>
+			<artifactId>jobj-contract-verifier</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<!-- THROW-ABLE DEPENDENCY -->

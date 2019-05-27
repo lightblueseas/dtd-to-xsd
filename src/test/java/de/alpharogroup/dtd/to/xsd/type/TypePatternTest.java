@@ -24,11 +24,9 @@
  */
 package de.alpharogroup.dtd.to.xsd.type;
 
-import static org.testng.AssertJUnit.assertNotNull;
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Pattern;
 
 import org.meanbean.lang.Factory;
@@ -37,7 +35,7 @@ import org.meanbean.test.Configuration;
 import org.meanbean.test.ConfigurationBuilder;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
+import de.alpharogroup.evaluate.object.verifier.ContractVerifier;
 
 /**
  * The unit test class for the class {@link TypePattern}
@@ -62,31 +60,11 @@ public class TypePatternTest
 	/**
 	 * Test method for {@link TypePattern#equals(Object)} , {@link TypePattern#hashCode()} and
 	 * {@link TypePattern#toString()}
-	 *
-	 * @throws IllegalAccessException
-	 *             if the caller does not have access to the property accessor method
-	 * @throws InstantiationException
-	 *             if a new instance of the bean's class cannot be instantiated
-	 * @throws InvocationTargetException
-	 *             if the property accessor method throws an exception
-	 * @throws NoSuchMethodException
-	 *             if an accessor method for this property cannot be found
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws ClassNotFoundException
-	 *             occurs if a given class cannot be located by the specified class loader
 	 */
 	@Test
-	public void testEqualsHashcodeAndToStringWithClassSilently()
-		throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
-		InstantiationException, ClassNotFoundException, IOException
+	public void verifyEqualsHashcodeAndToStringContracts()
 	{
-		boolean actual;
-		boolean expected;
-		actual = EqualsHashCodeAndToStringEvaluator
-			.evaluateEqualsHashcodeAndToString(TypePattern.class);
-		expected = true;
-		assertEquals(expected, actual);
+		ContractVerifier.of(TypePattern.class).verify();
 	}
 
 	/**

@@ -60,7 +60,7 @@ public class WriterTest
 	}
 
 	/**
-	 * Test method for {@link Writer#parse(XMLInputSource)}.
+	 * Test method for {@link Writer#parse(XMLInputSource)}
 	 */
 	@Test
 	public final void testParse()

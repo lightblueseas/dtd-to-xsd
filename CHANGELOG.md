@@ -6,11 +6,11 @@ Version 1.1-SNAPSHOT
 
 CHANGED:
 
-- update of parent version to 4.5
-- update of dependency file-worker version to 5.0.1
-- update of dependency silly-collections version to 5
-- update of test-objects dependency version to 5
-- update of jobject-evaluate dependency version to 2.5
+- update of parent version to 5
+- update of dependency file-worker version to 5.2.1
+- update of dependency silly-collections version to 5.2.1
+- update of test-objects dependency version to 5.2
+- replace of jobject-evaluate dependency with jobj-contract-verifier dependency
 - update of xercesImpl dependency version to 2.12.0
 
 Version 1
