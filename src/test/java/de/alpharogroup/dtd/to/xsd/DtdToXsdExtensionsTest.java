@@ -24,7 +24,7 @@
  */
 package de.alpharogroup.dtd.to.xsd;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 import java.io.File;
 import java.io.IOException;

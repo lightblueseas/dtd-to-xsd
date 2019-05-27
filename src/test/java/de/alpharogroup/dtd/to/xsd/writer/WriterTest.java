@@ -24,8 +24,8 @@
  */
 package de.alpharogroup.dtd.to.xsd.writer;
 
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertNull;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNull;
 
 import java.io.OutputStream;
 import java.util.List;
