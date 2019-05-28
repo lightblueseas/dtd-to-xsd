@@ -47,7 +47,7 @@
 		<!-- JOBJ-CONTRACT-VERIFIER version -->
 		<jobj-contract-verifier.version>3.2</jobj-contract-verifier.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<xercesImpl.version>2.12.0</xercesImpl.version>
+		<xercesImpl.version>2.12.0</xercesImpl.version>	
 	</properties>
 
 	<dependencyManagement>
@@ -105,7 +105,6 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>silly-collections</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>file-worker</artifactId>
