@@ -13,6 +13,8 @@
 
 Simple converter for dtd files to convert to xsd files
 
+If you like this project put a ⭐ and donate
+
 ## License
 
 The source code comes under the liberal MIT License, making dtd-to-xsd great for all types of applications.
